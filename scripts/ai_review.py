@@ -11,7 +11,7 @@ DOCS_DIR = REPO_ROOT / "docs"
 
 # Tune these:
 MODEL = os.getenv("OPENAI_MODEL", "gpt-5-mini")  # cheaper/faster; change to gpt-5 if you want
-FAIL_ON_SEVERITY = os.getenv("FAIL_ON_SEVERITY", "major").lower()  # minor|major|critical
+FAIL_ON_SEVERITY = os.getenv("FAIL_ON_SEVERITY", "critical").lower()  # minor|major|critical
 
 SEVERITY_ORDER = {"minor": 1, "major": 2, "critical": 3}
 
