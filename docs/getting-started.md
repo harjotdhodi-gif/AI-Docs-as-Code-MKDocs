@@ -14,3 +14,4 @@ This guide shows how to run the documentation site locally and propose changes t
 2. Install dependencies:
    ```bash
    python -m pip install -r requirements.txt
+   ```
