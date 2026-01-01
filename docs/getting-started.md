@@ -4,7 +4,7 @@ This guide shows how to run the documentation site locally and propose changes t
 
 ## Prerequisites
 
-- Python 3.11+
+- Python 3.11 or later
 - Git
 - Internet access (to install dependencies)
 
