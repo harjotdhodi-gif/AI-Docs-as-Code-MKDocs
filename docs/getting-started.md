@@ -1,4 +1,4 @@
-# Getting started
+# Getting started started started
 
 This guide shows how to run the documentation site locally and propose changes through a pull request.
 
