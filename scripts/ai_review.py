@@ -3,13 +3,12 @@ import os
 import subprocess
 from pathlib import Path
 from typing import Any, Dict, List
-
 from openai import OpenAI
+
+REPORT_ONLY = os.getenv("AI_REVIEW_REPORT_ONLY", "0").lower() in ("1", "true", "yes")
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DOCS_DIR = REPO_ROOT / "docs"
-
-REPORT_ONLY = os.getenv("AI_REVIEW_REPORT_ONLY", "0").lower() in ("1", "true", "yes")
 
 # Tune these:
 MODEL = os.getenv("OPENAI_MODEL", "gpt-5-mini")  # cheaper/faster; change to gpt-5 if you want
