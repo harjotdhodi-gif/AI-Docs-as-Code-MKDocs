@@ -1,4 +1,4 @@
-# Install and Verify
+# Installation and Verify
 
 Use this guide to install the documentation toolchain locally and confirm that builds work.
 
@@ -15,4 +15,4 @@ Run these commands from the repository root:
 ```bash
 python -m pip install --upgrade pip
 pip install -r requirements.txt
-
+```
