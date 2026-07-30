@@ -1,1 +1,30 @@
+name: Vale Documentation Review
 
+on:
+  pull_request:
+    paths:
+      - "docs/**/*.md"
+      - ".vale.ini"
+      - ".github/styles/**"
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  vale:
+    name: Vale Style Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Run Vale
+        uses: vale-cli/vale-action@v2
+        with:
+          files: docs
+          reporter: github-pr-check
+          filter_mode: added
+          fail_on_error: false
