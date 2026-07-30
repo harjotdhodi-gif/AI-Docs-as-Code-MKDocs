@@ -3,3 +3,4 @@ mkdocs-material==9.*
 mkdocs-pdf-export-plugin==0.5.10
 pymdown-extensions==10.*
 openai>=1.0.0
+mkdocs-awesome-nav
