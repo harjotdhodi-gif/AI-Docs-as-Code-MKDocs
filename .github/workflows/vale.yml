@@ -2,10 +2,7 @@ name: Vale Documentation Review
 
 on:
   pull_request:
-    paths:
-      - "docs/**/*.md"
-      - ".vale.ini"
-      - ".github/styles/**"
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
@@ -20,12 +17,180 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Run Vale
-        uses: vale-cli/vale-action@v2
+      - name: Run Vale annotations
+        id: vale_annotations
+        continue-on-error: true
+        uses: vale-cli/vale-action@v2.1.1
         with:
           files: docs
           reporter: github-pr-check
-          filter_mode: nofilter
+          filter_mode: added
           fail_on_error: false
           vale_flags: "--no-exit"
+
+      - name: Build Vale pull-request report
+        id: vale_report
+        if: always()
+        shell: bash
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          VALE_BIN="$(command -v vale || true)"
+          if [ -z "$VALE_BIN" ]; then
+            VALE_BIN="/home/runner/vale"
+          fi
+
+          mapfile -t CHANGED_FILES < <(
+            git diff --name-only "$BASE_SHA...$HEAD_SHA" |
+            grep -E '^docs/.*\.md$' || true
+          )
+
+          printf '%s\n' "${CHANGED_FILES[@]}" > vale-files.txt
+
+          if [ "${#CHANGED_FILES[@]}" -eq 0 ]; then
+            echo '{}' > vale-results.json
+            : > vale-runtime-error.txt
+            VALE_EXIT=0
+          else
+            set +e
+            "$VALE_BIN" --output=JSON --no-exit "${CHANGED_FILES[@]}" \
+              > vale-results.json 2> vale-runtime-error.txt
+            VALE_EXIT=$?
+            set -e
+          fi
+
+          echo "runtime_exit=$VALE_EXIT" >> "$GITHUB_OUTPUT"
+
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          def cell(value):
+              text = str(value if value not in (None, "") else "—")
+              return text.replace("\r", " ").replace("\n", " ").replace("|", r"\|")
+
+          result_path = Path("vale-results.json")
+          error_path = Path("vale-runtime-error.txt")
+          files_path = Path("vale-files.txt")
+
+          changed_files = [
+              line.strip()
+              for line in files_path.read_text(encoding="utf-8").splitlines()
+              if line.strip()
+          ]
+          runtime_error = error_path.read_text(encoding="utf-8").strip()
+
+          try:
+              results = json.loads(result_path.read_text(encoding="utf-8") or "{}")
+          except Exception as error:
+              results = {}
+              runtime_error = f"Unable to parse Vale JSON output: {error}\n{runtime_error}".strip()
+
+          alerts = []
+          if isinstance(results, dict):
+              for filename, entries in results.items():
+                  if not isinstance(entries, list):
+                      continue
+                  for entry in entries:
+                      if not isinstance(entry, dict):
+                          continue
+                      alerts.append(
+                          {
+                              "file": filename,
+                              "severity": str(entry.get("Severity", "suggestion")).lower(),
+                              "check": entry.get("Check", "Vale"),
+                              "line": entry.get("Line", "—"),
+                              "message": entry.get("Message") or entry.get("Description") or "Vale alert",
+                          }
+                      )
+
+          counts = {
+              level: sum(1 for item in alerts if item["severity"] == level)
+              for level in ("error", "warning", "suggestion")
+          }
+
+          if runtime_error:
+              status = "🔴 Vale could not complete the review"
+          elif counts["error"]:
+              status = "🟠 Vale errors require attention"
+          elif alerts:
+              status = "🟡 Vale suggestions or warnings found"
+          else:
+              status = "✅ No Vale issues found"
+
+          lines = [
+              "# Vale Documentation Review",
+              "",
+              f"**Status:** {status}",
+              "",
+              f"**Markdown files reviewed:** {len(changed_files)}  ",
+              f"**Errors:** {counts['error']} · **Warnings:** {counts['warning']} · **Suggestions:** {counts['suggestion']}",
+              "",
+              "> Vale checks writing style, terminology, spelling, and consistency. The final editorial decision remains with the human reviewer.",
+              "",
+          ]
+
+          if changed_files:
+              lines.append("**Changed files:** " + ", ".join(f"`{name}`" for name in changed_files))
+              lines.append("")
+          else:
+              lines.extend(["No changed Markdown files were detected under `docs/`.", ""])
+
+          if runtime_error:
+              lines.extend(
+                  [
+                      "## Runtime error",
+                      "",
+                      "```text",
+                      runtime_error[:4000],
+                      "```",
+                      "",
+                  ]
+              )
+
+          if alerts:
+              lines.extend(
+                  [
+                      "## Findings",
+                      "",
+                      "| Severity | Rule | File | Line | Finding |",
+                      "|---|---|---|---:|---|",
+                  ]
+              )
+              for item in alerts[:100]:
+                  lines.append(
+                      f"| {cell(item['severity'])} | {cell(item['check'])} | "
+                      f"{cell(item['file'])} | {cell(item['line'])} | {cell(item['message'])} |"
+                  )
+              lines.append("")
+              if len(alerts) > 100:
+                  lines.extend([f"_Report truncated: showing 100 of {len(alerts)} findings._", ""])
+
+          lines.extend(
+              [
+                  "---",
+                  f"_Updated for commit `{os.getenv('HEAD_SHA', 'unknown')[:12]}`._",
+                  "",
+              ]
+          )
+
+          Path("vale-review-report.md").write_text("\n".join(lines), encoding="utf-8")
+          PY
+
+      - name: Publish Vale report on pull request
+        if: always()
+        uses: marocchino/sticky-pull-request-comment@v3
+        with:
+          header: vale-documentation-review
+          path: vale-review-report.md
+
+      - name: Fail on Vale runtime error
+        if: always() && steps.vale_report.outputs.runtime_exit != '0'
+        run: |
+          echo "Vale encountered a runtime or configuration error. See the pull-request report."
+          exit 1
