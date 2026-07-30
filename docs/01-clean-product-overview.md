@@ -8,7 +8,7 @@ last_reviewed: "2026-07-15"
 next_review: "2027-01-15"
 ---
 
-# Customer Portal Overview
+# Overview of Customer Portal
 
 ## Purpose
 
