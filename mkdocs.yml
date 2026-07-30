@@ -29,6 +29,7 @@ markdown_extensions:
 
 plugins:
   - search
+  - awesome-nav
   - pdf-export:
       enabled_if_env: ENABLE_PDF_EXPORT
       # Generate a PDF per page (default)
