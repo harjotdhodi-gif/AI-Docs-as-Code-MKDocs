@@ -15,6 +15,10 @@ nav:
       - Getting Started: getting-started.md
       - Install: install.md
       - Review Workflow: review-workflow.md
+      - Product Overview: 01-clean-product-overview.md
+      - Unsupported claims: 02-unsupported-claims.md
+      - Security Compliance: 04-security-compliance-risk.md
+      
   - Downloads: downloads.md
 
 markdown_extensions:
