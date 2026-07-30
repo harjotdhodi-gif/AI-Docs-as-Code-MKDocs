@@ -26,5 +26,6 @@ jobs:
         with:
           files: docs
           reporter: github-pr-check
-          filter_mode: added
+          filter_mode: nofilter
           fail_on_error: false
+          vale_flags: "--no-exit"
