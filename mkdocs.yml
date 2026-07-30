@@ -9,19 +9,6 @@ theme:
     - navigation.sections
     - content.code.copy
 
-nav:
-  - Home: index.md
-  - Guides:
-      - Getting Started: getting-started.md
-      - Install: install.md
-      - Review Workflow: review-workflow.md
-      - Product Overview: 01-clean-product-overview.md
-      - Unsupported claims: 02-unsupported-claims.md
-      - Security Compliance: 04-security-compliance-risk.md
-      - Conflicting Procedure: 03-conflicting-outdated-procedure.md
-      
-  - Downloads: downloads.md
-
 markdown_extensions:
   - admonition
   - pymdownx.superfences
