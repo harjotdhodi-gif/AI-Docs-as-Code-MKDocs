@@ -1,1 +1,6 @@
+append_unmatched: true
 
+nav:
+  - Home: index.md
+  - Guides: guides
+  - Downloads: downloads.md
