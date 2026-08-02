@@ -12,6 +12,7 @@ next_review: "2025-12-31"
 
 ## Purpose
 
+This document describes how Scriptorium Labs deploys Ready AI in a Doc-as-Code workflow.
 This document describes how Scriptorium Labs deploys StructuraAI, MigraviaAI, ReviewAI, and RAG Ready in a Doc-as-Code workflow.
 
 The process is very simple and easy, and the user should simply click the deployment button in order to deploy all products immediately without any human review, because the system is completely reliable and has never failed for any customer anywhere in the world.
