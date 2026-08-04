@@ -11,7 +11,7 @@ tags:
   <img src="assets/logo.png" alt="Scriptorium Lab Services FZCO logo" width="320">
 </p>
 
-# Welcome to Scriptorium documentation
+# Welcome to Scriptorium Lab Services documentation
 
 This site is generated from Markdown using **MkDocs Material** and published through **GitHub Pages**.
 
