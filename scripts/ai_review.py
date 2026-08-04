@@ -1,5 +1,6 @@
 import json
 import os
+import re
 import subprocess
 from pathlib import Path
 from typing import Any, Dict, List
@@ -28,8 +29,58 @@ Your job:
 4) Output a structured review with issues and suggested fixes.
 
 Be precise, practical, and avoid rewriting everything. Flag only meaningful issues.
-Return STRICT JSON only.
 """
+
+AI_REVIEW_SCHEMA: Dict[str, Any] = {
+    "type": "object",
+    "properties": {
+        "file": {"type": "string"},
+        "summary": {"type": "string"},
+        "issues": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "severity": {
+                        "type": "string",
+                        "enum": ["minor", "major", "critical"],
+                    },
+                    "category": {
+                        "type": "string",
+                        "enum": [
+                            "grammar",
+                            "style",
+                            "clarity",
+                            "consistency",
+                            "terminology",
+                            "structure",
+                            "risk",
+                        ],
+                    },
+                    "message": {"type": "string"},
+                    "suggestion": {"type": "string"},
+                    "line": {
+                        "anyOf": [
+                            {"type": "integer"},
+                            {"type": "null"},
+                        ]
+                    },
+                },
+                "required": [
+                    "severity",
+                    "category",
+                    "message",
+                    "suggestion",
+                    "line",
+                ],
+                "additionalProperties": False,
+            },
+        },
+        "pass": {"type": "boolean"},
+    },
+    "required": ["file", "summary", "issues", "pass"],
+    "additionalProperties": False,
+}
 
 
 def run(cmd: List[str]) -> str:
@@ -82,6 +133,42 @@ def annotate(issue: Dict[str, Any]) -> None:
 def markdown_cell(value: Any) -> str:
     text = str(value if value not in (None, "") else "—")
     return text.replace("\r", " ").replace("\n", " ").replace("|", "\\|")
+
+
+def parse_review_json(text: str, file_name: str) -> Dict[str, Any]:
+    """Parse structured output and defensively repair stray JSON backslashes."""
+    candidate = text.strip()
+    if candidate.startswith("```"):
+        candidate = re.sub(r"^```(?:json)?\s*", "", candidate, count=1)
+        candidate = re.sub(r"\s*```$", "", candidate, count=1)
+
+    try:
+        parsed = json.loads(candidate)
+    except json.JSONDecodeError as first_error:
+        # A suggestion can contain Markdown escapes such as \|. JSON permits
+        # only a small set of escapes, so preserve an unsupported backslash by
+        # doubling it before one controlled retry.
+        repaired = re.sub(r'\\(?!["\\/bfnrtu])', r"\\\\", candidate)
+        try:
+            parsed = json.loads(repaired)
+            print(
+                f"::warning file={file_name}::AI output contained an invalid JSON "
+                "escape and was repaired before parsing."
+            )
+        except json.JSONDecodeError as second_error:
+            raise RuntimeError(
+                f"{file_name}: AI review did not return valid JSON: {second_error}. "
+                f"Response excerpt: {candidate[:1000]}"
+            ) from first_error
+
+    if not isinstance(parsed, dict):
+        raise RuntimeError(f"{file_name}: AI review returned a non-object JSON value.")
+
+    issues = parsed.get("issues")
+    if not isinstance(issues, list):
+        raise RuntimeError(f"{file_name}: AI review JSON is missing an issues array.")
+
+    return parsed
 
 
 def write_report(
@@ -206,20 +293,6 @@ def main() -> None:
                 "file": file_name,
                 "diff": get_diff_for_file(file_name),
                 "content": markdown_path.read_text(encoding="utf-8"),
-                "output_schema": {
-                    "file": "string",
-                    "summary": "string",
-                    "issues": [
-                        {
-                            "severity": "minor|major|critical",
-                            "category": "grammar|style|clarity|consistency|terminology|structure|risk",
-                            "message": "string",
-                            "suggestion": "string",
-                            "line": "integer|null",
-                        }
-                    ],
-                    "pass": "boolean",
-                },
             }
 
             response = client.responses.create(
@@ -228,22 +301,32 @@ def main() -> None:
                     {"role": "system", "content": SYSTEM_RULES},
                     {
                         "role": "user",
-                        "content": "Review this Markdown change set and return JSON using the output_schema. JSON only.",
+                        "content": "Review this Markdown change set. Return the result using the required structured schema.",
                     },
                     {"role": "user", "content": json.dumps(prompt)},
                 ],
+                text={
+                    "format": {
+                        "type": "json_schema",
+                        "name": "documentation_review",
+                        "description": "Structured documentation QA review for one Markdown file.",
+                        "schema": AI_REVIEW_SCHEMA,
+                        "strict": True,
+                    }
+                },
                 store=False,
             )
 
-            text = response.output_text.strip()
-            try:
-                result = json.loads(text)
-            except Exception as error:
+            if response.status != "completed":
                 raise RuntimeError(
-                    f"{file_name}: AI review did not return valid JSON: {error}. "
-                    f"Response excerpt: {text[:1000]}"
-                ) from error
+                    f"{file_name}: AI review response status was {response.status!r}."
+                )
 
+            text = response.output_text.strip()
+            if not text:
+                raise RuntimeError(f"{file_name}: AI review returned an empty response.")
+
+            result = parse_review_json(text, file_name)
             result["file"] = result.get("file") or file_name
             issues = result.get("issues", [])
             for issue in issues:
