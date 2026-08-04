@@ -4,10 +4,10 @@ site_description: >-
   AI-assisted reviews, and documentation publishing guidance.
 site_author: Scriptorium Lab Services FZCO
 
-site_url: https://harjotdhodi-gif.github.io/AI-Doc-As-Code-MKDocs/
+site_url: https://harjotdhodi-gif.github.io/AI-Docs-as-Code-MKDocs/
 
-repo_name: harjotdhodi-gif/AI-Doc-As-Code-MKDocs
-repo_url: https://github.com/harjotdhodi-gif/AI-Doc-As-Code-MKDocs
+repo_name: harjotdhodi-gif/AI-Docs-as-Code-MKDocs
+repo_url: https://github.com/harjotdhodi-gif/AI-Docs-as-Code-MKDocs
 edit_uri: edit/main/docs/
 
 copyright: >-
@@ -18,17 +18,11 @@ theme:
   name: material
   language: en
 
-  # Add these files under docs/assets/
-  logo: assets/logo.png
-  favicon: assets/favicon.png
-
   font:
     text: Outfit
     code: Roboto Mono
 
   palette:
-
-    # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: teal
@@ -37,7 +31,6 @@ theme:
         icon: material/weather-night
         name: Switch to dark mode
 
-    # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: teal
@@ -53,8 +46,6 @@ theme:
     annotation: material/plus-circle
 
   features:
-
-    # Navigation
     - navigation.instant
     - navigation.instant.progress
     - navigation.tracking
@@ -65,20 +56,12 @@ theme:
     - navigation.indexes
     - navigation.top
     - navigation.footer
-
-    # Table of contents
     - toc.follow
-
-    # Search
     - search.suggest
     - search.highlight
     - search.share
-
-    # Page actions
     - content.action.edit
     - content.action.view
-
-    # Code and technical content
     - content.code.copy
     - content.code.select
     - content.code.annotate
@@ -86,8 +69,6 @@ theme:
     - content.tooltips
 
 markdown_extensions:
-
-  # Core Markdown features
   - abbr
   - admonition
   - attr_list
@@ -100,74 +81,48 @@ markdown_extensions:
       permalink: true
       permalink_title: Link to this section
 
-  # Expandable admonitions
   - pymdownx.details
 
-  # Icons and emojis
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
-  # Code blocks
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
 
   - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - pymdownx.snippets:
       auto_append:
-      - includes/abbreviations.md
+        - includes/abbreviations.md
   - pymdownx.superfences
 
-  # Content tabs
   - pymdownx.tabbed:
       alternate_style: true
 
-  # Additional formatting
   - pymdownx.keys
   - pymdownx.mark
   - pymdownx.tasklist:
       custom_checkbox: true
 
 plugins:
-
- - social
- - blog
-
-  # Built-in full-text search
   - search
-
-  # Automatic navigation from folders and Markdown files
   - awesome-nav
-
-  # Apply common metadata through .meta.yml files
   - meta
-
-  # Page categorisation
+  - blog
   - tags
 
-  # Existing PDF generation
   - pdf-export:
       enabled_if_env: ENABLE_PDF_EXPORT
 
-      # Individual PDF for each page:
-      # combined: false
-
-      # One combined PDF:
-      # combined: true
-      # combined_output_path: pdf/combined.pdf
-
 extra:
-
-  # Optional page-status labels used in Markdown front matter
   status:
     new: Recently added
     updated: Recently updated
     deprecated: Scheduled for retirement
     review: Under editorial review
 
-  # Social and company links in the footer
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/harjotdhodi-gif
@@ -181,7 +136,5 @@ extra:
       link: mailto:contact@scriptoriumlab.com
       name: Contact Scriptorium Lab Services
 
-# Add branding and layout improvements here
 extra_css:
   - stylesheets/extra.css
-
