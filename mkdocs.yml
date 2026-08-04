@@ -26,3 +26,188 @@ plugins:
       # combined: true
       # combined_output_path: pdf/combined.pdf
 
+      ====================================================================================================================
+      # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+
+site_name: Scriptorium Lab Services Documentation
+site_description: >-
+  Governed technical documentation, Doc-as-Code workflows,
+  AI-assisted reviews, and documentation publishing guidance.
+site_author: Scriptorium Lab Services FZCO
+
+site_url: https://harjotdhodi-gif.github.io/AI-Workflow-in-Doc-As-Code-2/
+
+repo_name: harjotdhodi-gif/AI-Workflow-in-Doc-As-Code-2
+repo_url: https://github.com/harjotdhodi-gif/AI-Workflow-in-Doc-As-Code-2
+edit_uri: edit/main/docs/
+
+copyright: >-
+  Copyright &copy; 2026 Scriptorium Lab Services FZCO.
+  All rights reserved.
+
+theme:
+  name: material
+  language: en
+
+  # Add these files under docs/assets/
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+
+  font:
+    text: Outfit
+    code: Roboto Mono
+
+  palette:
+
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+  icon:
+    repo: fontawesome/brands/github
+    edit: material/pencil
+    view: material/eye
+    annotation: material/plus-circle
+
+  features:
+
+    # Navigation
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+
+    # Table of contents
+    - toc.follow
+
+    # Search
+    - search.suggest
+    - search.highlight
+    - search.share
+
+    # Page actions
+    - content.action.edit
+    - content.action.view
+
+    # Code and technical content
+    - content.code.copy
+    - content.code.select
+    - content.code.annotate
+    - content.tabs.link
+    - content.tooltips
+
+markdown_extensions:
+
+  # Core Markdown features
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+
+  - toc:
+      permalink: true
+      permalink_title: Link to this section
+
+  # Expandable admonitions
+  - pymdownx.details
+
+  # Icons and emojis
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  # Code blocks
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+
+  # Content tabs
+  - pymdownx.tabbed:
+      alternate_style: true
+
+  # Additional formatting
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
+plugins:
+
+  # Built-in full-text search
+  - search
+
+  # Automatic navigation from folders and Markdown files
+  - awesome-nav
+
+  # Apply common metadata through .meta.yml files
+  - meta
+
+  # Page categorisation
+  - tags
+
+  # Existing PDF generation
+  - pdf-export:
+      enabled_if_env: ENABLE_PDF_EXPORT
+
+      # Individual PDF for each page:
+      # combined: false
+
+      # One combined PDF:
+      # combined: true
+      # combined_output_path: pdf/combined.pdf
+
+extra:
+
+  # Optional page-status labels used in Markdown front matter
+  status:
+    new: Recently added
+    updated: Recently updated
+    deprecated: Scheduled for retirement
+    review: Under editorial review
+
+  # Social and company links in the footer
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/harjotdhodi-gif
+      name: Scriptorium Lab Services on GitHub
+
+    - icon: material/web
+      link: https://scriptoriumlab.com
+      name: Scriptorium Lab Services website
+
+    - icon: material/email
+      link: mailto:contact@scriptoriumlab.com
+      name: Contact Scriptorium Lab Services
+
+# Add branding and layout improvements here
+extra_css:
+  - stylesheets/extra.css
+
