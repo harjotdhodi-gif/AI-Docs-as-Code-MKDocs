@@ -1,3 +1,10 @@
+---
+tags:
+  - Getting Started
+  - Docs-as-Code
+  - Governance
+---
+
 # Installation and Verify
 
 Use this guide to install the documentation toolchain locally and confirm that builds work.
