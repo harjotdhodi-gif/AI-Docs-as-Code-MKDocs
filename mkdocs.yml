@@ -1,6 +1,3 @@
-      ====================================================================================================================
-      # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
-
 site_name: Scriptorium Lab Services Documentation
 site_description: >-
   Governed technical documentation, Doc-as-Code workflows,
