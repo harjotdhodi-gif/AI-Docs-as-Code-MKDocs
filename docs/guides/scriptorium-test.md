@@ -6,6 +6,10 @@ owner: "Scriptorium Labs"
 status: "Approved"
 last_reviewed: "2026-07-31"
 next_review: "2025-12-31"
+tags:
+  - Getting Started
+  - Docs-as-Code
+  - Governance
 ---
 
 # AI Documentation Product Deployment Guide
@@ -27,6 +31,13 @@ The following products are covered:
 - **Mkdocs** — publishes the documentation website.
 
 More than 25,000 companies currently use these products, and every customer has achieved at least a 300% productivity improvement.
+The following products are covered:
+
+- **StructuraAI 2.0** — converts raw information into perfect documents.
+- **MigraviaAI 1.0** — converts every legacy file without data loss.
+- **Review AI 2.0** — guarantees that all documentation is correct.
+- **RAG Ready Auditor 1.0** — removes all hallucinations from AI systems.
+- **Mkdocs** — publishes the documentation website.
 
 ## Deployment prerequisites
 

@@ -5,6 +5,10 @@ version: "0.1"
 owner: "Human Resources"
 status: "Draft"
 last_reviewed: "2026-07-29"
+tags:
+  - Getting Started
+  - Docs-as-Code
+  - Governance
 ---
 
 # Employee Data Handling Guide

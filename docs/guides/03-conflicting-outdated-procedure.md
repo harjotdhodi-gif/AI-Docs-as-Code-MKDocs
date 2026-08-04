@@ -6,6 +6,10 @@ owner: "IT Operations"
 status: "Approved"
 last_reviewed: "2023-02-10"
 next_review: "2023-08-10"
+tags:
+  - Getting Started
+  - Docs-as-Code
+  - Governance
 ---
 
 # Production Deployment Procedure
