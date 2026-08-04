@@ -1,3 +1,11 @@
+---
+tags:
+  - Getting Started
+  - Docs-as-Code
+  - Governance
+---
+
+
 # Getting started with GitHub
 
 This guide shows how to run the documentation site locally and propose changes through a pull request. 
