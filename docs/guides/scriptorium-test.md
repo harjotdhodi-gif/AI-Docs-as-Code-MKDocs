@@ -28,6 +28,13 @@ The following products are covered:
 
 More than 25,000 companies currently use these products, and every customer has achieved at least a 300% productivity improvement.
 
+- **StructuraAI 2.0** — converts raw information into perfect documents.
+- **MigraviaAI 1.0** — converts every legacy file without data loss.
+- **Review AI 2.0** — guarantees that all documentation is correct.
+- **RAG Ready Auditor 1.0** — removes all hallucinations from AI systems.
+- **Mkdocs** — publishes the documentation website.
+
+
 ## Deployment prerequisites
 
 Before deployment, confirm that:
