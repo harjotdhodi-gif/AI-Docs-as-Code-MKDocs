@@ -1,31 +1,3 @@
-site_name: Scriptorium Lab Services Documentation
-site_url: https://<YOUR_GH_USERNAME>.github.io/<YOUR_REPO>/
-
-theme:
-  name: material
-  features:
-    - navigation.instant
-    - navigation.tracking
-    - navigation.sections
-    - content.code.copy
-
-markdown_extensions:
-  - admonition
-  - pymdownx.superfences
-  - pymdownx.highlight
-
-plugins:
-  - search
-  - awesome-nav
-  - pdf-export:
-      enabled_if_env: ENABLE_PDF_EXPORT
-      # Generate a PDF per page (default)
-      # combined: false
-
-      # OR generate a single combined PDF:
-      # combined: true
-      # combined_output_path: pdf/combined.pdf
-
       ====================================================================================================================
       # yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
 
@@ -35,10 +7,10 @@ site_description: >-
   AI-assisted reviews, and documentation publishing guidance.
 site_author: Scriptorium Lab Services FZCO
 
-site_url: https://harjotdhodi-gif.github.io/AI-Workflow-in-Doc-As-Code-2/
+site_url: https://harjotdhodi-gif.github.io/AI-Doc-As-Code-MKDocs/
 
-repo_name: harjotdhodi-gif/AI-Workflow-in-Doc-As-Code-2
-repo_url: https://github.com/harjotdhodi-gif/AI-Workflow-in-Doc-As-Code-2
+repo_name: harjotdhodi-gif/AI-Doc-As-Code-MKDocs
+repo_url: https://github.com/harjotdhodi-gif/AI-Doc-As-Code-MKDocs
 edit_uri: edit/main/docs/
 
 copyright: >-
@@ -147,6 +119,8 @@ markdown_extensions:
 
   - pymdownx.inlinehilite
   - pymdownx.snippets
+      auto_append:
+      - includes/abbreviations.md
   - pymdownx.superfences
 
   # Content tabs
@@ -160,6 +134,9 @@ markdown_extensions:
       custom_checkbox: true
 
 plugins:
+
+ - social
+ - blog
 
   # Built-in full-text search
   - search
