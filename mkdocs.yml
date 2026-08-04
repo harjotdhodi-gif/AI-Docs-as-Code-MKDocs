@@ -6,6 +6,9 @@ site_author: Scriptorium Lab Services FZCO
 
 site_url: https://harjotdhodi-gif.github.io/AI-Docs-as-Code-MKDocs/
 
+exclude_docs: |
+  /includes/
+
 repo_name: harjotdhodi-gif/AI-Docs-as-Code-MKDocs
 repo_url: https://github.com/harjotdhodi-gif/AI-Docs-as-Code-MKDocs
 edit_uri: edit/main/docs/
