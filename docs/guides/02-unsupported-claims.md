@@ -20,7 +20,7 @@ The platform:
 - Eliminates all documentation errors
 - Guarantees full compliance with every international regulation
 - Produces final documents in less than five minutes
-- Requires no human review
+- Requires very less human review
 
 ## Customer results
 
