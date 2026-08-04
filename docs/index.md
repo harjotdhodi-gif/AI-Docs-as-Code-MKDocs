@@ -10,12 +10,6 @@ hide:
   - toc
 ---
 
-<div class="oracle-home">
-<section class="home-hero" aria-labelledby="home-title">
-<div class="home-hero__grid">
-<div class="home-brand">
-<img class="home-brand__logo" src="assets/logo.png" alt="Scriptorium Lab Services FZCO">
-<p class="home-eyebrow">Enterprise documentation center</p>
 <h1 id="home-title">Scriptorium Lab Services documentation</h1>
 <p class="home-hero__lead">Build, review, govern, and publish trustworthy documentation through a practical Docs-as-Code workflow.</p>
 <div class="home-actions" aria-label="Primary documentation actions">
