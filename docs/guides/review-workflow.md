@@ -1,3 +1,11 @@
+---
+tags:
+  - Getting Started
+  - Docs-as-Code
+  - Governance
+---
+
+
 # Review workflow (Docs-as-Code)
 
 This page explains how documentation changes move from draft to published output.
