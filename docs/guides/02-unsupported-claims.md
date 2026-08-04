@@ -5,6 +5,11 @@ version: "0.3"
 owner: "Marketing Team"
 status: "Draft"
 last_reviewed: "2026-07-25"
+tags:
+  - AI Review
+  - Governance
+  - Content Quality
+  - Unsupported Claims
 ---
 
 # AI Documentation Platform Benefits
