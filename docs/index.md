@@ -1,10 +1,6 @@
 ---
 title: Scriptorium documentation home
 description: Governed Docs-as-Code documentation built with MkDocs Material and GitHub Actions.
-tags:
-  - Getting Started
-  - Docs-as-Code
-  - Governance
 ---
 
 <p align="center">
