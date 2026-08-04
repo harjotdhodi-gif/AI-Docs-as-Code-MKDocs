@@ -6,6 +6,10 @@ owner: "Scriptorium Labs"
 status: "Approved"
 last_reviewed: "2026-07-31"
 next_review: "2025-12-31"
+tags:
+  - Getting Started
+  - Docs-as-Code
+  - Governance
 ---
 
 # AI Documentation Product Deployment Guide
