@@ -36,7 +36,7 @@ body {
   background-color: var(--sls-soft);
 }
 
-/* Single dark-charcoal previous/next footer */
+/* Dark-charcoal previous/next footer */
 .md-footer {
   display: block !important;
   color: #ffffff;
@@ -85,9 +85,71 @@ body {
   color: #ffffff;
 }
 
-/* Keep only the page-navigation footer; remove the second metadata bar. */
+/* Copyright and registered-address area, visually joined to the same footer */
 .md-footer-meta {
-  display: none !important;
+  display: block !important;
+  color: #ffffff;
+  background: #312d2a;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.md-footer-meta__inner {
+  display: flex;
+  max-width: 92rem;
+  padding: 1rem 1.25rem 1.2rem;
+  gap: 1.5rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.md-copyright {
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.md-copyright__highlight {
+  display: block;
+  color: inherit;
+}
+
+.sls-footer__copyright {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: #ffffff;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.sls-footer__address {
+  display: block;
+  max-width: 62rem;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.sls-footer__address strong {
+  color: #ffffff;
+  font-weight: 650;
+}
+
+.md-social {
+  flex: 0 0 auto;
+  padding: 0;
+}
+
+.md-social__link {
+  color: #ffffff;
+  opacity: 0.82;
+}
+
+.md-social__link:hover,
+.md-social__link:focus-visible {
+  color: #ffffff;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.09);
 }
 
 @media screen and (max-width: 44rem) {
@@ -105,6 +167,19 @@ body {
 
   .md-footer__title {
     font-size: 0.9rem;
+  }
+
+  .md-footer-meta__inner {
+    display: block;
+    padding: 0.9rem 0.75rem 1.1rem;
+  }
+
+  .md-copyright {
+    font-size: 0.78rem;
+  }
+
+  .md-social {
+    margin-top: 0.8rem;
   }
 }
 
