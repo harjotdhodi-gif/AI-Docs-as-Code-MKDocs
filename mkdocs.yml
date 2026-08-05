@@ -24,7 +24,7 @@ theme:
   favicon: assets/logo.png
 
   font:
-    text: Outfit
+    text: Roboto
     code: Roboto Mono
 
   palette:
@@ -129,6 +129,12 @@ extra:
     review: Under editorial review
 
   social:
+
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/harjotdhodi/
+      name: Scriptorium Lab Services on LinkedIn
+
+  
     - icon: fontawesome/brands/github
       link: https://github.com/harjotdhodi-gif
       name: Scriptorium Lab Services on GitHub
