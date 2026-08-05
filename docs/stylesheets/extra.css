@@ -183,7 +183,7 @@ body {
 
 /* Full-width teal product banner and non-clipping tab labels */
 .md-tabs {
-  width: 100%;
+  width: 150%;
   overflow: hidden;
   color: #ffffff;
   background:
