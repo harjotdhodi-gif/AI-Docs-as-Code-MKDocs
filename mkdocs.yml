@@ -30,7 +30,7 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: #F06292
+      primary: teal
       accent: amber
       toggle:
         icon: material/weather-night
