@@ -1,0 +1,1 @@
+Temporary validation marker for the MkDocs and GitHub Pages workflow.
