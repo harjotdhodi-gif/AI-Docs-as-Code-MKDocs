@@ -14,8 +14,8 @@ repo_url: https://github.com/harjotdhodi-gif/AI-Docs-as-Code-MKDocs
 edit_uri: edit/main/docs/
 
 copyright: >-
-  Copyright &copy; 2026 Scriptorium Lab Services FZCO.
-  All rights reserved.
+  <span class="sls-footer__copyright">Copyright &copy; 2026, SCRIPTORIUM LAB SERVICES FZCO. All Rights Reserved.</span>
+  <span class="sls-footer__address"><strong>Registered Business Address:</strong><br>IFZA Business Park, Building A1, Dubai Digital Park, Dubai Silicon Oasis, Dubai, United Arab Emirates</span>
 
 theme:
   name: material
