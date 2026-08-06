@@ -1,0 +1,238 @@
+/*
+ * Branch--2 fixed navigation, home artwork, and search refinements.
+ * Loaded after extra.css and branch2-updates.css.
+ */
+
+:root {
+  --branch2-fixed-header-height: 3.5rem;
+  --branch2-fixed-tabs-height: 3.45rem;
+}
+
+html {
+  scroll-padding-top: calc(
+    var(--branch2-fixed-header-height) +
+    var(--branch2-fixed-tabs-height) +
+    1rem
+  );
+}
+
+/* Keep both navigation headers fixed and prevent Material from hiding them. */
+.md-header,
+.md-header[data-md-state="hidden"] {
+  position: fixed !important;
+  z-index: 50 !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  transform: translateY(0) !important;
+}
+
+.md-tabs,
+.md-tabs[data-md-state="hidden"] {
+  position: fixed !important;
+  z-index: 49 !important;
+  top: var(--branch2-fixed-header-height) !important;
+  right: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  transform: translateY(0) !important;
+}
+
+.md-container {
+  padding-top: calc(
+    var(--branch2-fixed-header-height) +
+    var(--branch2-fixed-tabs-height)
+  );
+}
+
+/* Pill-shaped Material header search. */
+.md-search__inner,
+.md-search__form,
+.md-search__input {
+  border-radius: 999px !important;
+}
+
+.md-search__form {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+.md-search__input {
+  padding-right: 3rem;
+}
+
+.md-search__options {
+  right: 0.55rem;
+}
+
+/* Display the PNG as a separate, full-width visual. No text or gradient overlays. */
+.help-home {
+  clear: both;
+  margin-top: 1rem;
+}
+
+.help-home__visual {
+  display: block;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border-bottom: 1px solid #dedbd7;
+}
+
+.help-home__visual img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 34rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.help-home__hero {
+  min-height: 0 !important;
+  background: #151d38 !important;
+}
+
+.help-home__hero::before,
+.help-home__hero::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+
+.help-home__hero-art {
+  display: none !important;
+  background: none !important;
+}
+
+.help-home__hero-inner {
+  position: relative;
+  z-index: 1;
+  padding-top: clamp(2.75rem, 5vw, 4.5rem);
+  padding-bottom: clamp(3rem, 5vw, 4.75rem);
+}
+
+/* Independent, functional pill-shaped home-page search. */
+.help-home__search-form {
+  display: flex;
+  width: min(100%, 56rem);
+  min-height: 3.5rem;
+  padding: 0.28rem;
+  gap: 0.25rem;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+  box-shadow: 0 0.5rem 1.8rem rgba(4, 11, 31, 0.22);
+}
+
+.help-home__search-form:focus-within {
+  border-color: #ffbf47;
+  box-shadow:
+    0 0 0 3px rgba(255, 191, 71, 0.38),
+    0 0.5rem 1.8rem rgba(4, 11, 31, 0.22);
+}
+
+.help-home__search-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.help-home__search-icon {
+  flex: 0 0 auto;
+  margin-left: 0.75rem;
+  color: #0a6d91;
+  font-size: 1.55rem;
+  line-height: 1;
+}
+
+.help-home__search-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 2.8rem;
+  padding: 0.55rem 0.45rem;
+  color: #302d2a;
+  font: inherit;
+  font-size: 1rem;
+  background: transparent;
+  border: 0;
+  border-radius: 999px;
+  outline: 0;
+}
+
+.help-home__search-input::placeholder {
+  color: #6b6661;
+  opacity: 1;
+}
+
+.help-home__search-submit {
+  flex: 0 0 auto;
+  min-height: 2.75rem;
+  padding: 0.55rem 1.25rem;
+  color: #ffffff;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #0f6e6e;
+  border: 0;
+  border-radius: 999px;
+}
+
+.help-home__search-submit:hover {
+  background: #0a5959;
+}
+
+.help-home__search-submit:focus-visible,
+.help-home__search-input:focus-visible {
+  outline: 0 !important;
+}
+
+@media screen and (max-width: 76.234375em) {
+  html {
+    scroll-padding-top: calc(var(--branch2-fixed-header-height) + 1rem);
+  }
+
+  .md-tabs {
+    display: none !important;
+  }
+
+  .md-container {
+    padding-top: var(--branch2-fixed-header-height);
+  }
+}
+
+@media screen and (max-width: 44rem) {
+  .help-home__visual img {
+    max-height: 20rem;
+  }
+
+  .help-home__search-form {
+    min-height: 3.25rem;
+  }
+
+  .help-home__search-submit {
+    padding-inline: 0.9rem;
+  }
+}
+
+@media print {
+  .md-header,
+  .md-tabs,
+  .help-home__search-form {
+    display: none !important;
+  }
+
+  .md-container {
+    padding-top: 0 !important;
+  }
+}

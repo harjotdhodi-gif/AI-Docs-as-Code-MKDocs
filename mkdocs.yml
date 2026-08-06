@@ -138,3 +138,7 @@ extra:
 extra_css:
   - stylesheets/extra.css
   - stylesheets/branch2-updates.css
+  - stylesheets/branch2-search-navigation.css
+
+extra_javascript:
+  - javascripts/home-search.js
