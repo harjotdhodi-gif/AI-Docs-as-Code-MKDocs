@@ -1,5 +1,6 @@
 name: Docs CI/CD (HTML + PDF + DOCX)
 
+# Deployment refresh after Pull Request #21. No functional workflow change.
 on:
   push:
     branches: [ "main", "Branch--2" ]
