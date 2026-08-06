@@ -12,16 +12,17 @@ hide:
 
 <div class="help-home">
 <section class="help-home__hero" aria-labelledby="help-home-title">
-<div class="help-home__hero-art help-home__hero-art--left" aria-hidden="true"></div>
-<div class="help-home__hero-art help-home__hero-art--right" aria-hidden="true"></div>
 <div class="help-home__hero-inner">
 <p class="help-home__eyebrow">Scriptorium Lab Services documentation center</p>
 <h1 id="help-home-title">What can we help you find?</h1>
 <p class="help-home__lead">Find practical guidance for authoring, reviewing, governing, and publishing enterprise documentation through a controlled Docs-as-Code workflow.</p>
-<button class="help-home__search" type="button" aria-label="Open documentation search" onclick="const toggle=document.querySelector('[data-md-toggle=&quot;search&quot;]'); if (toggle) { toggle.checked=true; } const field=document.querySelector('.md-search__input'); if (field) { window.setTimeout(() => field.focus(), 0); }">
+<form class="help-home__search-form" role="search" data-home-search aria-describedby="home-search-description">
+<label class="help-home__search-label" for="home-documentation-search">Search the documentation</label>
 <span class="help-home__search-icon" aria-hidden="true">⌕</span>
-<span>Search documentation</span>
-</button>
+<input id="home-documentation-search" class="help-home__search-input" name="q" type="search" placeholder="Search documentation" autocomplete="off" enterkeyhint="search">
+<button class="help-home__search-submit" type="submit">Search</button>
+</form>
+<p id="home-search-description" class="help-home__search-label">Enter one or more keywords and submit the form to open matching documentation results.</p>
 </div>
 </section>
 
@@ -54,9 +55,9 @@ hide:
 <li><a href="guides/">Browse all guides</a></li>
 </ul>
 <ul>
-<li><a href="downloads/">Download HTML files</a></li>
 <li><a href="downloads/">Download PDF files</a></li>
 <li><a href="downloads/">Download Word files</a></li>
+<li><a href="guides/review-workflow/">Review the governance workflow</a></li>
 </ul>
 </div>
 </section>
@@ -86,7 +87,7 @@ hide:
 <a class="help-home__service" href="downloads/">
 <span class="help-home__service-number">04</span>
 <strong>Deliver outputs</strong>
-<span>Access generated HTML, PDF, and DOCX files for every published page.</span>
+<span>Access generated PDF and DOCX files for every published page.</span>
 </a>
 </div>
 </div>
