@@ -1,44 +1,12 @@
 from __future__ import annotations
 
 import pathlib
-import shutil
 import tempfile
 
 from pypdf import PdfReader, PdfWriter
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parents[1]
-DOCS_DIR = REPO_ROOT / "docs"
-SITE_DIR = REPO_ROOT / "site"
-OUT_DIR = SITE_DIR / "downloads" / "pdf"
-
-EXCLUDED_NAMES = {"downloads.md"}
-EXCLUDED_PARTS = {"includes"}
-
-
-def include_page(path: pathlib.Path) -> bool:
-    rel = path.relative_to(DOCS_DIR)
-    return path.name not in EXCLUDED_NAMES and not any(part in EXCLUDED_PARTS for part in rel.parts)
-
-
-def generated_pdf_path(rel: pathlib.Path) -> pathlib.Path:
-    if rel.name == "index.md":
-        candidates = [
-            SITE_DIR / rel.parent / "index.pdf",
-            SITE_DIR / rel.parent / "index" / "index.pdf",
-        ]
-    else:
-        route = rel.with_suffix("")
-        candidates = [
-            SITE_DIR / route / f"{rel.stem}.pdf",
-            SITE_DIR / rel.with_suffix(".pdf"),
-            SITE_DIR / route / "index.pdf",
-        ]
-
-    for candidate in candidates:
-        if candidate.is_file():
-            return candidate
-
-    raise FileNotFoundError(f"No generated PDF found for {rel}. Checked: {candidates}")
+PDF_DIR = REPO_ROOT / "site" / "downloads" / "pdf"
 
 
 def has_visual_content(page) -> bool:
@@ -61,27 +29,30 @@ def has_visual_content(page) -> bool:
             xobjects = xobjects.get_object()
         except AttributeError:
             pass
-        if len(xobjects) > 0:
-            return True
+        return len(xobjects) > 0
 
     return False
 
 
-def remove_blank_pages(source: pathlib.Path) -> None:
-    reader = PdfReader(str(source))
-    keep = [page for page in reader.pages if has_visual_content(page)]
+def remove_blank_pages(pdf_path: pathlib.Path) -> int:
+    reader = PdfReader(str(pdf_path))
+    retained = [page for page in reader.pages if has_visual_content(page)]
 
-    if not keep or len(keep) == len(reader.pages):
-        return
+    if not retained:
+        raise RuntimeError(f"PDF contains no visible pages: {pdf_path}")
+
+    removed = len(reader.pages) - len(retained)
+    if removed == 0:
+        return 0
 
     writer = PdfWriter()
-    for page in keep:
+    for page in retained:
         writer.add_page(page)
 
     with tempfile.NamedTemporaryFile(
-        prefix=f"{source.stem}-",
+        prefix=f"{pdf_path.stem}-",
         suffix=".pdf",
-        dir=source.parent,
+        dir=pdf_path.parent,
         delete=False,
     ) as temporary:
         temp_path = pathlib.Path(temporary.name)
@@ -89,33 +60,26 @@ def remove_blank_pages(source: pathlib.Path) -> None:
     try:
         with temp_path.open("wb") as stream:
             writer.write(stream)
-        temp_path.replace(source)
+        temp_path.replace(pdf_path)
     finally:
         temp_path.unlink(missing_ok=True)
 
-    print(f"Removed {len(reader.pages) - len(keep)} blank page(s) from {source}.")
+    return removed
 
 
 def main() -> None:
-    if OUT_DIR.exists():
-        shutil.rmtree(OUT_DIR)
-    OUT_DIR.mkdir(parents=True, exist_ok=True)
+    pdf_files = sorted(PDF_DIR.rglob("*.pdf"))
+    if not pdf_files:
+        raise FileNotFoundError(f"No generated PDFs found under {PDF_DIR}")
 
-    count = 0
-    for md_file in sorted(DOCS_DIR.rglob("*.md")):
-        if not include_page(md_file):
-            continue
+    total_removed = 0
+    for pdf_file in pdf_files:
+        removed = remove_blank_pages(pdf_file)
+        total_removed += removed
+        if removed:
+            print(f"Removed {removed} blank page(s) from {pdf_file}.")
 
-        rel = md_file.relative_to(DOCS_DIR)
-        source = generated_pdf_path(rel)
-        remove_blank_pages(source)
-
-        destination = OUT_DIR / rel.with_suffix(".pdf")
-        destination.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(source, destination)
-        count += 1
-
-    print(f"Prepared {count} cleaned PDF downloads in {OUT_DIR}.")
+    print(f"Checked {len(pdf_files)} PDFs; removed {total_removed} blank page(s).")
 
 
 if __name__ == "__main__":

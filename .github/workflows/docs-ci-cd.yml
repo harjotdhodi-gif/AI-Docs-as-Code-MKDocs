@@ -32,7 +32,8 @@ jobs:
       - name: Install OS dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 shared-mime-info pandoc
+          sudo apt-get install -y pandoc
+          google-chrome --version
 
       - name: Install Python dependencies
         run: |
@@ -42,19 +43,20 @@ jobs:
       - name: Generate downloads page
         run: python scripts/build_downloads.py
 
-      - name: Build site and page PDFs
-        env:
-          ENABLE_PDF_EXPORT: "1"
-        run: mkdocs build --clean --strict
-
-      - name: Export editable DOCX files
-        run: python scripts/export_docx.py
+      - name: Build site
+        run: mkdocs build --clean
 
       - name: Export downloadable HTML files
         run: python scripts/export_html.py
 
-      - name: Remove blank PDF pages and collect downloads
+      - name: Export per-page PDF files
+        run: python scripts/export_pdf.py
+
+      - name: Remove blank PDF pages
         run: python scripts/clean_pdfs.py
+
+      - name: Export editable DOCX files
+        run: python scripts/export_docx.py
 
       - name: Verify generated download files
         run: python scripts/verify_downloads.py

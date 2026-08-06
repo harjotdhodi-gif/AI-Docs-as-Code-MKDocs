@@ -123,12 +123,6 @@ plugins:
   - blog
   - tags
 
-  - pdf-export:
-      enabled_if_env: ENABLE_PDF_EXPORT
-      media_type: print
-      combined: false
-      theme_handler_path: scripts/pdf_theme.py
-
 extra:
   status:
     new: Recently added

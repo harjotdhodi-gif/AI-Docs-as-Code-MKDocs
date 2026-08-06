@@ -33,12 +33,9 @@ def page_title(path: pathlib.Path) -> str:
     return path.stem.replace("-", " ").replace("_", " ").title()
 
 
-def route_for(rel: pathlib.Path) -> str:
-    if rel.name == "index.md":
-        route = rel.parent.as_posix()
-    else:
-        route = rel.with_suffix("").as_posix()
-    return "../" if route in {"", "."} else f"../{route}/"
+def source_link_for(rel: pathlib.Path) -> str:
+    # MkDocs rewrites source-document links to their final directory URLs.
+    return f"../{rel.as_posix()}"
 
 
 def artifact_path(kind: str, rel: pathlib.Path, suffix: str) -> str:
@@ -65,7 +62,7 @@ def main() -> None:
         "",
         '<div class="download-grid" aria-label="Available output formats">',
         '<div class="download-format"><strong>HTML</strong><span>Rendered page with the published site styling.</span></div>',
-        '<div class="download-format"><strong>PDF</strong><span>A4 document with controlled margins, page numbers, and clean page breaks.</span></div>',
+        '<div class="download-format"><strong>PDF</strong><span>A4 document with controlled margins and clean page breaks.</span></div>',
         '<div class="download-format"><strong>DOCX</strong><span>Editable Microsoft Word output generated from the rendered page.</span></div>',
         "</div>",
         "",
@@ -78,7 +75,7 @@ def main() -> None:
     for page in pages:
         rel = page.relative_to(DOCS_DIR)
         title = html.escape(page_title(page))
-        online = route_for(rel)
+        online = source_link_for(rel)
         html_file = artifact_path("html", rel, ".html")
         pdf_file = artifact_path("pdf", rel, ".pdf")
         docx_file = artifact_path("docx", rel, ".docx")
@@ -96,7 +93,7 @@ def main() -> None:
             "",
             '!!! note "Build-generated files"',
             "    The links are populated by the GitHub Actions publishing workflow. "
-            "A failed or incomplete build is blocked before the site is deployed.",
+            "A failed or incomplete export is blocked before the site is deployed.",
             "",
         ]
     )
