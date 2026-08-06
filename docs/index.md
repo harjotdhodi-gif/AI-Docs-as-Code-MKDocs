@@ -20,12 +20,13 @@ hide:
 <p class="help-home__eyebrow">Scriptorium Lab Services documentation center</p>
 <h1 id="help-home-title">What can we help you find?</h1>
 <p class="help-home__lead">Find practical guidance for authoring, reviewing, governing, and publishing enterprise documentation through a controlled Docs-as-Code workflow.</p>
-<form class="help-home__search-form" role="search" data-home-search>
+<form class="help-home__search-form" role="search" data-home-search aria-describedby="home-search-description">
 <label class="help-home__search-label" for="home-documentation-search">Search the documentation</label>
 <span class="help-home__search-icon" aria-hidden="true">⌕</span>
 <input id="home-documentation-search" class="help-home__search-input" name="q" type="search" placeholder="Search documentation" autocomplete="off" enterkeyhint="search">
 <button class="help-home__search-submit" type="submit">Search</button>
 </form>
+<p id="home-search-description" class="help-home__search-label">Enter one or more keywords and submit the form to open matching documentation results.</p>
 </div>
 </section>
 
