@@ -22,14 +22,10 @@ def include_page(path: pathlib.Path) -> bool:
 
 def rendered_html_path(rel: pathlib.Path) -> pathlib.Path:
     if rel.name == "index.md":
-        candidates = [
-            SITE_DIR / rel.parent / "index.html",
-            SITE_DIR / rel.parent.with_suffix(".html"),
-        ]
+        candidates = [SITE_DIR / rel.parent / "index.html"]
     else:
-        route = rel.with_suffix("")
         candidates = [
-            SITE_DIR / route / "index.html",
+            SITE_DIR / rel.with_suffix("") / "index.html",
             SITE_DIR / rel.with_suffix(".html"),
         ]
 

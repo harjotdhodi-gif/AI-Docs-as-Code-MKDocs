@@ -34,8 +34,8 @@ def page_title(path: pathlib.Path) -> str:
 
 
 def source_link_for(rel: pathlib.Path) -> str:
-    # MkDocs rewrites source-document links to their final directory URLs.
-    return f"../{rel.as_posix()}"
+    # downloads.md is located at the docs root, so source links remain docs-relative.
+    return rel.as_posix()
 
 
 def artifact_path(kind: str, rel: pathlib.Path, suffix: str) -> str:
