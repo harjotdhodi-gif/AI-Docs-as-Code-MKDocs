@@ -2,7 +2,7 @@ name: Docs CI/CD (HTML + PDF + DOCX)
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "Branch--2" ]
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
@@ -13,7 +13,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: "pages-${{ github.ref }}"
   cancel-in-progress: true
 
 jobs:
@@ -29,32 +29,37 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install OS deps (WeasyPrint + Pandoc)
+      - name: Install OS dependencies
         run: |
           sudo apt-get update
-          # WeasyPrint deps (cairo, pango, gdk-pixbuf) + helpers
-          sudo apt-get install -y libcairo2 libpango-1.0-0 libgdk-pixbuf2.0-0 shared-mime-info
-          # Pandoc for DOCX export
-          sudo apt-get install -y pandoc
+          sudo apt-get install -y pandoc librsvg2-bin
+          google-chrome --version
 
-      - name: Install Python deps
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Generate downloads page (Markdown)
-        run: |
-          python scripts/build_downloads.py
+      - name: Generate downloads page
+        run: python scripts/build_downloads.py
 
-      - name: Build site (HTML + PDFs)
-        env:
-          ENABLE_PDF_EXPORT: "1"
-        run: |
-          mkdocs build --clean
+      - name: Build site
+        run: mkdocs build --clean
 
-      - name: Export DOCX into site/
-        run: |
-          python scripts/export_docx.py
+      - name: Export downloadable HTML files
+        run: python scripts/export_html.py
+
+      - name: Export per-page PDF files
+        run: python scripts/export_pdf.py
+
+      - name: Remove blank PDF pages
+        run: python scripts/clean_pdfs.py
+
+      - name: Export editable DOCX files
+        run: python scripts/export_docx.py
+
+      - name: Verify generated download files
+        run: python scripts/verify_downloads.py
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
@@ -62,7 +67,7 @@ jobs:
           path: site
 
   deploy:
-    if: github.event_name == 'push'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: build
     environment:
@@ -73,4 +78,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-

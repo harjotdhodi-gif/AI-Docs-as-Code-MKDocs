@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 760" role="img" aria-labelledby="title desc">
+  <title id="title">Abstract Scriptorium documentation artwork</title>
+  <desc id="desc">Original layered geometric and organic shapes in navy, teal, aqua, and gold.</desc>
+  <defs>
+    <pattern id="waves" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M-6 10 C4 2 14 18 24 10 S44 2 54 10" fill="none" stroke="#7F91C7" stroke-width="2" opacity=".42"/>
+      <path d="M-6 26 C4 18 14 34 24 26 S44 18 54 26" fill="none" stroke="#7F91C7" stroke-width="2" opacity=".42"/>
+    </pattern>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="2.1" fill="#B8DCD8" opacity=".48"/>
+      <circle cx="15" cy="14" r="1.4" fill="#B8DCD8" opacity=".35"/>
+    </pattern>
+    <linearGradient id="teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1E6E71"/>
+      <stop offset="1" stop-color="#4C9B91"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#D6A15F"/>
+      <stop offset="1" stop-color="#B8753A"/>
+    </linearGradient>
+  </defs>
+
+  <path d="M0 0H244C206 72 237 125 185 174C123 232 141 310 72 356C39 378 17 411 0 455Z" fill="#1D2748"/>
+  <path d="M0 0H244C206 72 237 125 185 174C123 232 141 310 72 356C39 378 17 411 0 455Z" fill="url(#waves)"/>
+  <path d="M182 0H420V212C367 199 329 229 289 194C247 157 252 99 182 74Z" fill="url(#teal)"/>
+  <path d="M260 52C320 21 375 33 420 74V290C363 270 327 314 272 281C218 248 206 174 260 52Z" fill="url(#dots)" opacity=".9"/>
+  <path d="M0 285C46 253 78 275 111 316C145 357 198 361 214 412C232 471 171 515 120 540C62 568 29 621 0 668Z" fill="url(#gold)"/>
+  <path d="M82 385C130 348 187 361 226 402C264 443 244 506 205 553C170 596 155 656 102 693C68 716 32 726 0 739V610C29 583 40 535 44 493C48 447 50 410 82 385Z" fill="#E8C78C" opacity=".62"/>
+  <path d="M239 316C285 274 348 278 420 323V520C360 486 322 512 278 481C227 445 209 375 239 316Z" fill="#3E8F87" opacity=".74"/>
+  <path d="M229 515C282 475 347 500 420 559V760H142C165 697 178 630 229 515Z" fill="#1D2748" opacity=".92"/>
+  <path d="M230 516C282 475 347 500 420 559V760H142C165 697 178 630 229 515Z" fill="url(#waves)" opacity=".75"/>
+  <path d="M15 689C75 649 112 659 148 704L183 760H0V706Z" fill="#2F7F7A"/>
+  <path d="M0 116L42 76L78 119L37 161Z" fill="#D49A55" opacity=".95"/>
+  <path d="M338 365L390 329L420 357V434L368 455L331 411Z" fill="#D49A55" opacity=".92"/>
+</svg>

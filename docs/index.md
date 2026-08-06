@@ -10,128 +10,93 @@ hide:
   - toc
 ---
 
-<div class="sls-home">
-<section class="sls-home__hero" aria-labelledby="home-title">
-<div class="sls-home__hero-grid">
-<div>
-<div class="sls-home__brand">
-<img src="assets/logo.png" alt="Scriptorium Lab Services FZCO logo">
-<span>Documentation center</span>
-</div>
-<p class="sls-home__eyebrow">Governed Docs-as-Code</p>
-<h1 id="home-title">Enterprise documentation, built to be trusted</h1>
-<p class="sls-home__lead">Create, review, govern, and publish clear documentation through Markdown, GitHub, MkDocs, automated checks, and accountable human approval.</p>
-<div class="sls-home__actions" aria-label="Primary documentation actions">
-<a class="sls-home__action sls-home__action--primary" href="guides/install/">Get started</a>
-<a class="sls-home__action" href="guides/review-workflow/">View the review workflow</a>
-</div>
-</div>
-<aside class="sls-home__workflow" aria-labelledby="workflow-title">
-<h2 id="workflow-title">Workflow at a glance</h2>
-<ol>
-<li><div><strong>Author</strong><span>Create structured Markdown content in a working branch.</span></div></li>
-<li><div><strong>Validate</strong><span>Run Vale, MkDocs, link, and build checks.</span></div></li>
-<li><div><strong>Review</strong><span>Use AI findings as evidence, not automatic approval.</span></div></li>
-<li><div><strong>Approve</strong><span>Let a qualified human make the final decision.</span></div></li>
-<li><div><strong>Publish</strong><span>Deliver approved HTML, PDF, and Word outputs.</span></div></li>
-</ol>
-</aside>
+<div class="help-home">
+<section class="help-home__hero" aria-labelledby="help-home-title">
+<div class="help-home__hero-art help-home__hero-art--left" aria-hidden="true"></div>
+<div class="help-home__hero-art help-home__hero-art--right" aria-hidden="true"></div>
+<div class="help-home__hero-inner">
+<p class="help-home__eyebrow">Scriptorium Lab Services documentation center</p>
+<h1 id="help-home-title">What can we help you find?</h1>
+<p class="help-home__lead">Find practical guidance for authoring, reviewing, governing, and publishing enterprise documentation through a controlled Docs-as-Code workflow.</p>
+<button class="help-home__search" type="button" aria-label="Open documentation search" onclick="const toggle=document.querySelector('[data-md-toggle=&quot;search&quot;]'); if (toggle) { toggle.checked=true; } const field=document.querySelector('.md-search__input'); if (field) { window.setTimeout(() => field.focus(), 0); }">
+<span class="help-home__search-icon" aria-hidden="true">⌕</span>
+<span>Search documentation</span>
+</button>
 </div>
 </section>
 
-<section class="sls-home__section" aria-labelledby="work-title">
-<div class="sls-home__section-inner">
-<h2 id="work-title">Work with documentation</h2>
-<p class="sls-home__section-intro">Move from raw information to governed, reusable, and publishable documentation through four connected activities.</p>
-<div class="sls-home__cards">
-<a class="sls-home__card" href="guides/01-clean-product-overview/">
-<small>01 · Create</small>
-<strong>Author</strong>
-<span>Structure product, process, policy, and knowledge content in readable Markdown.</span>
-</a>
-<a class="sls-home__card" href="guides/review-workflow/">
-<small>02 · Check</small>
-<strong>Review</strong>
-<span>Apply deterministic style checks and contextual AI review before approval.</span>
-</a>
-<a class="sls-home__card" href="tags/">
-<small>03 · Control</small>
-<strong>Govern</strong>
-<span>Use ownership, metadata, terminology, Pull Requests, and human authority.</span>
-</a>
-<a class="sls-home__card" href="downloads/">
-<small>04 · Deliver</small>
-<strong>Publish</strong>
-<span>Generate and distribute approved documentation as web, PDF, and Word outputs.</span>
-</a>
-</div>
+<section class="help-home__catalog" aria-label="Documentation categories">
+<div class="help-home__catalog-grid">
+<section class="help-home__catalog-card" aria-labelledby="workflow-card-title">
+<div class="help-home__catalog-mark" aria-hidden="true">◇</div>
+<h2 id="workflow-card-title">Documentation workflow</h2>
+<div class="help-home__link-columns">
+<ul>
+<li><a href="guides/install/">Install the toolchain</a></li>
+<li><a href="guides/01-clean-product-overview/">Author structured content</a></li>
+<li><a href="guides/review-workflow/">Run Vale and AI reviews</a></li>
+</ul>
+<ul>
+<li><a href="guides/03-conflicting-outdated-procedure/">Resolve content conflicts</a></li>
+<li><a href="guides/04-security-compliance-risk/">Review security risks</a></li>
+<li><a href="downloads/">Publish approved outputs</a></li>
+</ul>
 </div>
 </section>
 
-<section class="sls-home__section sls-home__section--soft" aria-labelledby="resources-title">
-<div class="sls-home__section-inner">
-<h2 id="resources-title">Find the right resource</h2>
-<p class="sls-home__section-intro">Use the guides and references below to understand the repository, maintain quality, and support governed publishing.</p>
-<div class="sls-home__resources">
-<section class="sls-home__resource" aria-labelledby="resource-start">
-<h3 id="resource-start">Getting started</h3>
+<section class="help-home__catalog-card" aria-labelledby="resources-card-title">
+<div class="help-home__catalog-mark" aria-hidden="true">▦</div>
+<h2 id="resources-card-title">Knowledge resources</h2>
+<div class="help-home__link-columns">
 <ul>
-<li><a href="guides/install/">Install and verify the toolchain</a></li>
-<li><a href="guides/01-clean-product-overview/">Review a clean documentation example</a></li>
-<li><a href="https://github.com/harjotdhodi-gif/AI-Docs-as-Code-MKDocs">Explore the GitHub repository</a></li>
-</ul>
-</section>
-<section class="sls-home__resource" aria-labelledby="resource-quality">
-<h3 id="resource-quality">Quality and style</h3>
-<ul>
-<li><a href="guides/review-workflow/">Understand Vale and AI review roles</a></li>
-<li><a href="abbreviations/">Use approved abbreviations and terminology</a></li>
-<li><a href="guides/02-unsupported-claims/">Recognize unsupported claims</a></li>
-</ul>
-</section>
-<section class="sls-home__resource" aria-labelledby="resource-governance">
-<h3 id="resource-governance">Governance</h3>
-<ul>
-<li><a href="guides/review-workflow/">Follow the governed review workflow</a></li>
-<li><a href="guides/03-conflicting-outdated-procedure/">Identify conflicting instructions</a></li>
-<li><a href="guides/04-security-compliance-risk/">Review security and compliance risks</a></li>
-</ul>
-</section>
-<section class="sls-home__resource" aria-labelledby="resource-discovery">
-<h3 id="resource-discovery">Content discovery</h3>
-<ul>
-<li><a href="tags/">Browse documentation by tag</a></li>
-<li><a href="abbreviations/">Open the glossary</a></li>
+<li><a href="tags/">Browse by documentation tag</a></li>
+<li><a href="abbreviations/">Use the glossary</a></li>
 <li><a href="guides/">Browse all guides</a></li>
 </ul>
-</section>
-<section class="sls-home__resource" aria-labelledby="resource-delivery">
-<h3 id="resource-delivery">Publishing and delivery</h3>
 <ul>
-<li><a href="downloads/">Access generated PDF files</a></li>
-<li><a href="downloads/">Access generated Word files</a></li>
-<li><a href="https://harjotdhodi-gif.github.io/AI-Docs-as-Code-MKDocs/">Open the published documentation site</a></li>
+<li><a href="downloads/">Download HTML files</a></li>
+<li><a href="downloads/">Download PDF files</a></li>
+<li><a href="downloads/">Download Word files</a></li>
 </ul>
+</div>
 </section>
-<section class="sls-home__resource" aria-labelledby="resource-support">
-<h3 id="resource-support">Company and support</h3>
-<ul>
-<li><a href="https://scriptoriumlab.com">Visit Scriptorium Lab Services</a></li>
-<li><a href="mailto:contact@scriptoriumlab.com">Contact the documentation team</a></li>
-<li><a href="https://github.com/harjotdhodi-gif/AI-Docs-as-Code-MKDocs">View source and contribute</a></li>
-</ul>
+</div>
 </section>
+
+<section class="help-home__services" aria-labelledby="services-title">
+<div class="help-home__section-inner">
+<h2 id="services-title">Explore the documentation</h2>
+<p class="help-home__section-lead">Use these entry points to move from initial setup to governed publication.</p>
+<div class="help-home__service-grid">
+<a class="help-home__service" href="guides/install/">
+<span class="help-home__service-number">01</span>
+<strong>Get started</strong>
+<span>Set up Markdown, MkDocs, GitHub Actions, Vale, and document exports.</span>
+</a>
+<a class="help-home__service" href="guides/review-workflow/">
+<span class="help-home__service-number">02</span>
+<strong>Review content</strong>
+<span>Understand how deterministic checks and contextual AI review work together.</span>
+</a>
+<a class="help-home__service" href="tags/">
+<span class="help-home__service-number">03</span>
+<strong>Govern knowledge</strong>
+<span>Organize content with approved terminology, tags, ownership, and human authority.</span>
+</a>
+<a class="help-home__service" href="downloads/">
+<span class="help-home__service-number">04</span>
+<strong>Deliver outputs</strong>
+<span>Access generated HTML, PDF, and DOCX files for every published page.</span>
+</a>
 </div>
 </div>
 </section>
 
-<section class="sls-home__section" aria-labelledby="authority-title">
-<div class="sls-home__governance">
+<section class="help-home__assurance" aria-labelledby="assurance-title">
 <div>
-<h2 id="authority-title">Human approval remains the final authority</h2>
-<p>Automated checks identify deviations, risks, and improvement opportunities. A qualified reviewer makes the final editorial and technical decision before publication.</p>
+<h2 id="assurance-title">Human approval remains the final authority</h2>
+<p>Automated checks identify deviations and risks. A qualified reviewer makes the final editorial and technical decision before publication.</p>
 </div>
-<a class="md-button" href="guides/review-workflow/">Read the governance workflow</a>
-</div>
+<a class="md-button" href="guides/review-workflow/">View the governance workflow</a>
 </section>
 </div>

@@ -1,10 +1,11 @@
 site_name: Scriptorium Lab Services Documentation
 site_description: >-
-  Governed technical documentation, Doc-as-Code workflows,
+  Governed technical documentation, Docs-as-Code workflows,
   AI-assisted reviews, and documentation publishing guidance.
 site_author: Scriptorium Lab Services FZCO
 
 site_url: https://harjotdhodi-gif.github.io/AI-Docs-as-Code-MKDocs/
+use_directory_urls: true
 
 exclude_docs: |
   /includes/
@@ -14,13 +15,17 @@ repo_url: https://github.com/harjotdhodi-gif/AI-Docs-as-Code-MKDocs
 edit_uri: edit/main/docs/
 
 copyright: >-
-  <span class="sls-footer__copyright">Copyright &copy; 2026, SCRIPTORIUM LAB SERVICES FZCO. All Rights Reserved.</span>
-  <span class="sls-footer__address"><strong>Registered Business Address:</strong><br>IFZA Business Park, Building A1, Dubai Digital Park, Dubai Silicon Oasis, Dubai, United Arab Emirates</span>
+  <span class="sls-footer__identity">
+    <img class="sls-footer__logo" src="/AI-Docs-as-Code-MKDocs/assets/logo.png" alt="Scriptorium Lab Services FZCO logo">
+    <span class="sls-footer__details">
+      <span class="sls-footer__copyright">Copyright &copy; 2026, SCRIPTORIUM LAB SERVICES FZCO. All Rights Reserved.</span>
+      <span class="sls-footer__address"><strong>Registered Business Address:</strong><br>IFZA Business Park, Building A1, Dubai Digital Park, Dubai Silicon Oasis, Dubai, United Arab Emirates</span>
+    </span>
+  </span>
 
 theme:
   name: material
   language: en
-  logo: assets/logo.png
   favicon: assets/logo.png
 
   font:
@@ -118,9 +123,6 @@ plugins:
   - blog
   - tags
 
-  - pdf-export:
-      enabled_if_env: ENABLE_PDF_EXPORT
-
 extra:
   status:
     new: Recently added
@@ -129,12 +131,10 @@ extra:
     review: Under editorial review
 
   social:
-
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/harjotdhodi/
       name: Scriptorium Lab Services on LinkedIn
 
-  
     - icon: fontawesome/brands/github
       link: https://github.com/harjotdhodi-gif
       name: Scriptorium Lab Services on GitHub
