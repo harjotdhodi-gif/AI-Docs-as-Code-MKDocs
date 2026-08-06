@@ -51,7 +51,7 @@ body {
   width: clamp(6rem, 10vw, 11rem);
   content: "";
   pointer-events: none;
-  background-image: url("../assets/help-art.svg");
+  background-image: url("../assets/help-art.png");
   background-repeat: repeat-y;
   background-position: center top;
   background-size: 100% auto;
@@ -238,7 +238,7 @@ body {
   height: 15rem;
   content: "";
   pointer-events: none;
-  background: url("../assets/help-art.svg") center / contain no-repeat;
+  background: url("../assets/help-art.png") center / contain no-repeat;
   opacity: 0.09;
   transform: rotate(12deg);
 }
@@ -434,8 +434,8 @@ body {
 
 .sls-footer__logo {
   display: block;
-  width: 5rem;
-  max-height: 5rem;
+  width: 7rem;
+  max-height: 7rem;
   padding: 0.35rem;
   object-fit: contain;
   background: #ffffff;
