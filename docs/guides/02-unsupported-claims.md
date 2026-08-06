@@ -5,11 +5,6 @@ version: "0.3"
 owner: "Marketing Team"
 status: "Draft"
 last_reviewed: "2026-07-25"
-tags:
-  - AI Review
-  - Governance
-  - Content Quality
-  - Unsupported Claims
 ---
 
 # AI Documentation Platform Benefits
@@ -25,7 +20,7 @@ The platform:
 - Eliminates all documentation errors
 - Guarantees full compliance with every international regulation
 - Produces final documents in less than five minutes
-- Requires very less human review
+- Requires no human review
 
 ## Customer results
 
