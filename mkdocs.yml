@@ -33,21 +33,9 @@ theme:
     code: Roboto Mono
 
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: teal
-      accent: amber
-      toggle:
-        icon: material/weather-night
-        name: Switch to dark mode
-
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: teal
-      accent: amber
-      toggle:
-        icon: material/weather-sunny
-        name: Switch to light mode
+    scheme: default
+    primary: teal
+    accent: amber
 
   icon:
     repo: fontawesome/brands/github
@@ -149,3 +137,4 @@ extra:
 
 extra_css:
   - stylesheets/extra.css
+  - stylesheets/branch2-updates.css
