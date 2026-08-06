@@ -11,10 +11,6 @@ hide:
 ---
 
 <div class="help-home">
-<figure class="help-home__visual" aria-hidden="true">
-<img src="assets/help-art.png" alt="">
-</figure>
-
 <section class="help-home__hero" aria-labelledby="help-home-title">
 <div class="help-home__hero-inner">
 <p class="help-home__eyebrow">Scriptorium Lab Services documentation center</p>
