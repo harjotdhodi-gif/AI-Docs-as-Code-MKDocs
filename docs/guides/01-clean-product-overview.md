@@ -6,10 +6,6 @@ owner: "Product Documentation Team"
 status: "Approved"
 last_reviewed: "2026-07-15"
 next_review: "2027-01-15"
-tags:
-  - Getting Started
-  - Docs-as-Code
-  - Governance
 ---
 
 # Overview of Customer Portal
