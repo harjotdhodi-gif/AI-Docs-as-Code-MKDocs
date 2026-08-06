@@ -66,40 +66,57 @@ html {
   right: 0.55rem;
 }
 
-/* Display the PNG as a separate, full-width visual. No text or gradient overlays. */
+/* Full-width homepage artwork with accessible text contrast. */
 .help-home {
   clear: both;
   margin-top: 1rem;
 }
 
 .help-home__visual {
-  display: block;
-  width: 100%;
-  margin: 0;
-  overflow: hidden;
-  background: #ffffff;
-  border-bottom: 1px solid #dedbd7;
-}
-
-.help-home__visual img {
-  display: block;
-  width: 100%;
-  height: auto;
-  max-height: 34rem;
-  object-fit: cover;
-  object-position: center;
+  display: none !important;
 }
 
 .help-home__hero {
-  min-height: 0 !important;
-  background: #151d38 !important;
+  position: relative;
+  display: grid;
+  width: 100%;
+  min-height: clamp(27rem, 54vw, 39rem) !important;
+  overflow: hidden;
+  align-items: center;
+  color: #ffffff;
+  background-color: #151d38 !important;
+  background-image: url("../assets/help-art.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  isolation: isolate;
 }
 
-.help-home__hero::before,
+.help-home__hero::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  display: block !important;
+  content: "" !important;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(14, 22, 47, 0.92) 0%,
+    rgba(14, 22, 47, 0.78) 42%,
+    rgba(14, 22, 47, 0.52) 70%,
+    rgba(14, 22, 47, 0.38) 100%
+  ) !important;
+}
+
 .help-home__hero::after {
-  display: none !important;
-  content: none !important;
-  background: none !important;
+  position: absolute;
+  z-index: 0;
+  inset: auto 0 0;
+  display: block !important;
+  height: 28%;
+  content: "" !important;
+  pointer-events: none;
+  background: linear-gradient(transparent, rgba(8, 15, 34, 0.42)) !important;
 }
 
 .help-home__hero-art {
@@ -110,8 +127,19 @@ html {
 .help-home__hero-inner {
   position: relative;
   z-index: 1;
-  padding-top: clamp(2.75rem, 5vw, 4.5rem);
-  padding-bottom: clamp(3rem, 5vw, 4.75rem);
+  width: min(100%, 78rem);
+  margin: 0 auto;
+  padding: clamp(3.25rem, 7vw, 6rem) clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.help-home__hero-inner > * {
+  max-width: 58rem;
+}
+
+.help-home__eyebrow,
+.help-home h1,
+.help-home__lead {
+  text-shadow: 0 2px 14px rgba(4, 10, 27, 0.55);
 }
 
 /* Independent, functional pill-shaped home-page search. */
@@ -125,14 +153,14 @@ html {
   background: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 999px;
-  box-shadow: 0 0.5rem 1.8rem rgba(4, 11, 31, 0.22);
+  box-shadow: 0 0.5rem 1.8rem rgba(4, 11, 31, 0.3);
 }
 
 .help-home__search-form:focus-within {
   border-color: #ffbf47;
   box-shadow:
     0 0 0 3px rgba(255, 191, 71, 0.38),
-    0 0.5rem 1.8rem rgba(4, 11, 31, 0.22);
+    0 0.5rem 1.8rem rgba(4, 11, 31, 0.3);
 }
 
 .help-home__search-label {
@@ -209,11 +237,25 @@ html {
   .md-container {
     padding-top: var(--branch2-fixed-header-height);
   }
+
+  .help-home__hero {
+    min-height: clamp(25rem, 66vw, 34rem) !important;
+    background-position: 58% center !important;
+  }
 }
 
 @media screen and (max-width: 44rem) {
-  .help-home__visual img {
-    max-height: 20rem;
+  .help-home__hero {
+    min-height: 30rem !important;
+    background-position: 62% center !important;
+  }
+
+  .help-home__hero::before {
+    background: rgba(12, 20, 43, 0.78) !important;
+  }
+
+  .help-home__hero-inner {
+    padding: 3rem 1.15rem;
   }
 
   .help-home__search-form {
@@ -234,5 +276,23 @@ html {
 
   .md-container {
     padding-top: 0 !important;
+  }
+
+  .help-home__hero {
+    min-height: auto !important;
+    color: #302d2a !important;
+    background: #ffffff !important;
+  }
+
+  .help-home__hero::before,
+  .help-home__hero::after {
+    display: none !important;
+  }
+
+  .help-home__eyebrow,
+  .help-home h1,
+  .help-home__lead {
+    color: #302d2a !important;
+    text-shadow: none !important;
   }
 }
