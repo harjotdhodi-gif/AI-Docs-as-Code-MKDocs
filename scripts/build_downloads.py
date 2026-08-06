@@ -34,7 +34,6 @@ def page_title(path: pathlib.Path) -> str:
 
 
 def source_link_for(rel: pathlib.Path) -> str:
-    # downloads.md is located at the docs root, so source links remain docs-relative.
     return rel.as_posix()
 
 
@@ -48,7 +47,7 @@ def main() -> None:
     lines = [
         "---",
         "title: Documentation downloads",
-        "description: Download every published documentation page as HTML, PDF, or DOCX.",
+        "description: Download every published documentation page as PDF or DOCX.",
         "tags:",
         "  - Publishing",
         "  - Downloads",
@@ -56,32 +55,28 @@ def main() -> None:
         "",
         "# Documentation downloads",
         "",
-        '<p class="downloads-intro">Every published page is generated in three reusable formats. '
-        "Use HTML for browser-based sharing, PDF for controlled distribution and printing, "
-        "and DOCX for downstream editing.</p>",
+        '<p class="downloads-intro">Every published page is generated in two reusable formats. '
+        "Use PDF for controlled distribution and printing, and DOCX for downstream editing.</p>",
         "",
         '<div class="download-grid" aria-label="Available output formats">',
-        '<div class="download-format"><strong>HTML</strong><span>Rendered page with the published site styling.</span></div>',
         '<div class="download-format"><strong>PDF</strong><span>A4 document with controlled margins and clean page breaks.</span></div>',
         '<div class="download-format"><strong>DOCX</strong><span>Editable Microsoft Word output generated from the rendered page.</span></div>',
         "</div>",
         "",
         '<div class="download-table" markdown>',
         "",
-        "| Documentation page | Open online | HTML | PDF | DOCX |",
-        "|---|---:|---:|---:|---:|",
+        "| Documentation page | Open online | PDF | DOCX |",
+        "|---|---:|---:|---:|",
     ]
 
     for page in pages:
         rel = page.relative_to(DOCS_DIR)
         title = html.escape(page_title(page))
         online = source_link_for(rel)
-        html_file = artifact_path("html", rel, ".html")
         pdf_file = artifact_path("pdf", rel, ".pdf")
         docx_file = artifact_path("docx", rel, ".docx")
         lines.append(
             f'| {title} | [Open]({online}) | '
-            f'<a href="{html_file}" download>HTML</a> | '
             f'<a href="{pdf_file}" download>PDF</a> | '
             f'<a href="{docx_file}" download>DOCX</a> |'
         )
