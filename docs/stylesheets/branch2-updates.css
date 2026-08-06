@@ -1,0 +1,302 @@
+/*
+ * Branch--2 refinements requested after the Help Center redesign.
+ * Loaded after extra.css so these rules intentionally restore or override
+ * the relevant presentation features without altering the base theme file.
+ */
+
+:root {
+  --branch2-header-height: 3.5rem;
+  --branch2-tabs-height: 3.45rem;
+}
+
+/* Light mode only. */
+html {
+  color-scheme: light;
+  scroll-padding-top: calc(var(--branch2-header-height) + var(--branch2-tabs-height) + 1rem);
+}
+
+/* Keep the application header and teal menu banner visible while scrolling. */
+.md-header {
+  position: sticky !important;
+  z-index: 40 !important;
+  top: 0;
+  transform: none !important;
+}
+
+.md-header[data-md-state="hidden"] {
+  transform: none !important;
+}
+
+.md-tabs {
+  position: sticky !important;
+  z-index: 39 !important;
+  top: var(--branch2-header-height);
+  width: 100% !important;
+  transform: none !important;
+}
+
+.md-tabs[data-md-state="hidden"] {
+  transform: none !important;
+}
+
+/* Place the full-width artwork below the Material edit/view actions. */
+.help-home {
+  clear: both;
+  margin-top: 1rem;
+}
+
+.help-home__hero {
+  position: relative;
+  background: #151d38 !important;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.help-home__hero::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background-image: url("../assets/help-art.svg");
+  background-repeat: repeat-x;
+  background-position: center center;
+  background-size: auto 125%;
+  opacity: 0.9;
+}
+
+.help-home__hero::after {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: auto;
+  height: auto;
+  content: "";
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(21, 29, 56, 0.9),
+    rgba(21, 29, 56, 0.55) 52%,
+    rgba(21, 29, 56, 0.82)
+  );
+}
+
+.help-home__hero-art {
+  display: none !important;
+}
+
+.help-home__hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* Restore the complete previous/next navigation footer. */
+.md-footer {
+  display: block !important;
+  color: #ffffff;
+  background: #312d2a;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 -0.2rem 0.7rem rgba(49, 45, 42, 0.14);
+}
+
+.md-footer__inner {
+  max-width: 92rem;
+  min-height: 5.25rem;
+  padding: 0.85rem 1.25rem;
+}
+
+.md-footer__link {
+  min-height: 3.6rem;
+  padding: 0.65rem 0.8rem;
+  color: #ffffff;
+  opacity: 1;
+  border-radius: var(--sls-radius-sm);
+}
+
+.md-footer__link:hover,
+.md-footer__link:focus-visible {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.md-footer__direction {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.md-footer__title {
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  white-space: normal;
+}
+
+.md-footer__button {
+  color: #ffffff;
+}
+
+/* Restore logo, copyright, address, and social links in the footer meta area. */
+.md-footer-meta {
+  display: block !important;
+  color: #ffffff;
+  background: #312d2a;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.md-footer-meta__inner {
+  display: flex;
+  max-width: 92rem;
+  padding: 1.15rem 1.25rem 1.35rem;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.md-copyright {
+  display: block !important;
+  flex: 1 1 auto;
+  margin: 0;
+  padding: 0;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.md-copyright__highlight {
+  display: block;
+  color: inherit;
+}
+
+.sls-footer__identity {
+  display: grid;
+  grid-template-columns: 5.25rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: center;
+}
+
+.sls-footer__logo {
+  display: block;
+  width: 5rem;
+  max-height: 5rem;
+  padding: 0.35rem;
+  object-fit: contain;
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 0.3rem;
+}
+
+.sls-footer__details {
+  display: block;
+}
+
+.sls-footer__copyright {
+  display: block;
+  margin-bottom: 0.42rem;
+  color: #ffffff;
+  font-size: 0.84rem;
+  font-weight: 650;
+  letter-spacing: 0.01em;
+}
+
+.sls-footer__address {
+  display: block;
+  max-width: 65rem;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.sls-footer__address strong {
+  color: #ffffff;
+  font-weight: 650;
+}
+
+.md-social {
+  display: flex !important;
+  flex: 0 0 auto;
+  padding: 0;
+  gap: 0.2rem;
+  align-items: center;
+}
+
+.md-social__link {
+  color: #ffffff;
+  opacity: 0.82;
+  border-radius: var(--sls-radius-sm);
+}
+
+.md-social__link:hover,
+.md-social__link:focus-visible {
+  color: #ffffff;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.09);
+}
+
+/* Downloads now presents PDF and DOCX only. */
+.download-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media screen and (max-width: 60rem) {
+  .help-home {
+    margin-top: 0.75rem;
+  }
+
+  .help-home__hero::before {
+    background-size: auto 112%;
+    opacity: 0.82;
+  }
+}
+
+@media screen and (max-width: 44rem) {
+  .md-footer__inner {
+    padding: 0.65rem 0.55rem;
+  }
+
+  .md-footer__link {
+    padding: 0.55rem;
+  }
+
+  .md-footer__direction {
+    font-size: 0.7rem;
+  }
+
+  .md-footer__title {
+    font-size: 0.9rem;
+  }
+
+  .md-footer-meta__inner {
+    display: block;
+    padding: 1rem 0.8rem 1.2rem;
+  }
+
+  .sls-footer__identity {
+    grid-template-columns: 4.25rem minmax(0, 1fr);
+  }
+
+  .sls-footer__logo {
+    width: 4rem;
+    max-height: 4rem;
+  }
+
+  .md-social {
+    margin-top: 0.85rem;
+  }
+
+  .download-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  .md-header,
+  .md-tabs,
+  .md-footer,
+  .help-home__hero::before,
+  .help-home__hero::after {
+    display: none !important;
+  }
+}

@@ -26,7 +26,7 @@ def main() -> None:
 
     for md_file in pages:
         rel = md_file.relative_to(DOCS_DIR)
-        for kind, suffix in (("html", ".html"), ("pdf", ".pdf"), ("docx", ".docx")):
+        for kind, suffix in (("pdf", ".pdf"), ("docx", ".docx")):
             artifact = SITE_DIR / "downloads" / kind / rel.with_suffix(suffix)
             if not artifact.is_file():
                 failures.append(f"Missing {kind.upper()} artifact: {artifact}")
@@ -39,7 +39,7 @@ def main() -> None:
             print(f"- {failure}", file=sys.stderr)
         raise SystemExit(1)
 
-    print(f"Verified the downloads page and {len(pages) * 3} generated files.")
+    print(f"Verified the downloads page and {len(pages) * 2} generated files.")
 
 
 if __name__ == "__main__":

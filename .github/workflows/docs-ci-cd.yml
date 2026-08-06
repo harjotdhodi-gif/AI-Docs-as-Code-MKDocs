@@ -46,9 +46,6 @@ jobs:
       - name: Build site
         run: mkdocs build --clean
 
-      - name: Export downloadable HTML files
-        run: python scripts/export_html.py
-
       - name: Export per-page PDF files
         run: python scripts/export_pdf.py
 
