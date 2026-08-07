@@ -1,0 +1,41 @@
+/*
+ * Branch--2: replace the two repeating side artwork rails with one centered art layer.
+ * Loaded after the existing Help Center styles so this file is the final authority.
+ */
+
+.md-main::before {
+  position: absolute !important;
+  z-index: 0 !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  content: "" !important;
+  pointer-events: none;
+  background-image: url("../assets/help-art.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center 1.5rem !important;
+  background-size: min(72rem, 82vw) auto !important;
+  opacity: 0.08 !important;
+  transform: none !important;
+}
+
+.md-main::after {
+  display: none !important;
+  content: none !important;
+  background: none !important;
+}
+
+@media screen and (max-width: 60rem) {
+  .md-main::before {
+    background-position: center 1rem !important;
+    background-size: min(48rem, 96vw) auto !important;
+    opacity: 0.065 !important;
+  }
+}
+
+@media print {
+  .md-main::before,
+  .md-main::after {
+    display: none !important;
+  }
+}
