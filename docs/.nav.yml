@@ -3,6 +3,6 @@ append_unmatched: true
 nav:
   - Home: index.md
   - Guides: guides
-  - Abbreviations and glossary: abbreviations.md
-  - Documentation tags: tags.md
+  - Abbreviations and Glossary: abbreviations.md
+  - Tags: tags.md
   - Downloads: downloads.md
