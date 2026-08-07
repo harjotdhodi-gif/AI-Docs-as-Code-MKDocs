@@ -55,7 +55,7 @@ body {
   background-repeat: repeat-y;
   background-position: center top;
   background-size: 100% auto;
-  opacity: 0.16;
+  opacity: 1.0;
 }
 
 .md-main::before {
@@ -79,10 +79,10 @@ body {
   background-image: none !important;
 }
 
-.md-content__inner {
+/*.md-content__inner {
   box-shadow: 0 0 0 1px rgba(216, 213, 209, 0.4);
 }
-
+*/
 .md-tabs {
   width: 100% !important;
 }
@@ -117,7 +117,7 @@ body {
   left: 0;
   height: 1px;
   content: "";
-  background: rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 1.0);
 }
 
 .help-home__hero-art {
@@ -127,7 +127,7 @@ body {
   width: min(25rem, 25vw);
   pointer-events: none;
   background: url("../assets/help-art.svg") center / contain no-repeat;
-  opacity: 0.92;
+  opacity: 1.0;
 }
 
 .help-home__hero-art--left {

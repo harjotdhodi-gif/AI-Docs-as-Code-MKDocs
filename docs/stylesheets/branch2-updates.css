@@ -61,7 +61,7 @@ html {
   background-repeat: repeat-x;
   background-position: center center;
   background-size: auto 125%;
-  opacity: 0.9;
+  opacity: 1.0;
 }
 
 .help-home__hero::after {
@@ -72,12 +72,12 @@ html {
   height: auto;
   content: "";
   pointer-events: none;
-  background: linear-gradient(
-    100deg,
-    rgba(21, 29, 56, 0.9),
-    rgba(21, 29, 56, 0.55) 52%,
-    rgba(21, 29, 56, 0.82)
-  );
+  /* background: linear-gradient(
+    * 100deg,
+    * rgba(21, 29, 56, 0.9),
+    * rgba(21, 29, 56, 0.55) 52%,
+    * rgba(21, 29, 56, 0.82)
+ ); */ 
 }
 
 .help-home__hero-art {

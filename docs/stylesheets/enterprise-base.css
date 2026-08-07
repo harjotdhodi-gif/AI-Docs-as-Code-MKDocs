@@ -103,12 +103,12 @@ textarea {
 body {
   color: var(--md-default-fg-color);
   background-color: var(--sls-canvas);
-  background-image:
+/*  background-image:
     linear-gradient(30deg, rgba(18, 79, 89, 0.025) 12%, transparent 12.5%, transparent 87%, rgba(18, 79, 89, 0.025) 87.5%),
     linear-gradient(150deg, rgba(18, 79, 89, 0.025) 12%, transparent 12.5%, transparent 87%, rgba(18, 79, 89, 0.025) 87.5%),
     radial-gradient(circle at 12% 14%, rgba(0, 116, 154, 0.04), transparent 22rem),
     radial-gradient(circle at 90% 12%, rgba(183, 137, 46, 0.035), transparent 20rem);
-  background-size: 52px 90px, 52px 90px, auto, auto;
+  background-size: 52px 90px, 52px 90px, auto, auto;   */
 }
 
 .md-grid {
