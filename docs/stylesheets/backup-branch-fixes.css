@@ -1,0 +1,127 @@
+/*
+ * Backup-Branch presentation fixes.
+ * Loaded last so these rules are authoritative for search layering,
+ * artwork coverage, and navigation/TOC typography.
+ */
+
+/*
+ * Keep the native Material search interface above the fixed application
+ * header and teal tab banner. The header is the search stacking context,
+ * so it must remain above the tabs while search output is open.
+ */
+.md-header,
+.md-header[data-md-state="hidden"] {
+  z-index: 1000 !important;
+  overflow: visible !important;
+}
+
+.md-header__inner {
+  overflow: visible !important;
+}
+
+.md-tabs,
+.md-tabs[data-md-state="hidden"] {
+  z-index: 100 !important;
+}
+
+.md-search {
+  position: relative !important;
+  z-index: 1200 !important;
+  overflow: visible !important;
+}
+
+.md-search__overlay {
+  z-index: 1100 !important;
+}
+
+.md-search__inner,
+.md-search__form,
+.md-search__output,
+.md-search__scrollwrap {
+  position: relative;
+  z-index: 1201 !important;
+}
+
+/* Preserve the existing pill-shaped header search while raising it. */
+.md-search__inner,
+.md-search__form,
+.md-search__input {
+  border-radius: 999px !important;
+}
+
+/*
+ * Restore distinct left and right visual-art sections. Each side uses one
+ * non-repeating image stretched to cover the complete rail, with a dark
+ * fallback so no white patch can appear above or around the artwork.
+ */
+.md-main::before,
+.md-main::after {
+  position: absolute !important;
+  z-index: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  display: block !important;
+  width: clamp(8rem, 13vw, 15rem) !important;
+  height: auto !important;
+  content: "" !important;
+  pointer-events: none;
+  background-color: #151d38 !important;
+  background-image: url("../assets/help-art.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+  background-size: cover !important;
+  opacity: 0.22 !important;
+}
+
+.md-main::before {
+  left: 0 !important;
+  right: auto !important;
+  transform: none !important;
+}
+
+.md-main::after {
+  right: 0 !important;
+  left: auto !important;
+  transform: scaleX(-1) !important;
+}
+
+/* The home hero itself also uses one full-coverage, non-repeating artwork. */
+.help-home__hero {
+  background-color: #151d38 !important;
+  background-image: url("../assets/help-art.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
+}
+
+/* Bold primary navigation, side navigation, breadcrumbs, and TOC links. */
+.md-tabs__link,
+.md-nav__title,
+.md-nav__link,
+.md-path__link,
+.md-sidebar--primary .md-nav__link,
+.md-sidebar--secondary .md-nav__link,
+.md-nav--secondary .md-nav__link {
+  font-weight: 700 !important;
+}
+
+.md-nav__link--active,
+.md-nav__link[aria-current="page"],
+.md-tabs__link--active {
+  font-weight: 800 !important;
+}
+
+@media screen and (max-width: 60rem) {
+  .md-main::before,
+  .md-main::after {
+    width: clamp(4.5rem, 12vw, 7rem) !important;
+    opacity: 0.16 !important;
+  }
+}
+
+@media print {
+  .md-main::before,
+  .md-main::after {
+    display: none !important;
+  }
+}
