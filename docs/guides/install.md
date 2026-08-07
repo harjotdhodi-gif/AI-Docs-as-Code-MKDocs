@@ -1,4 +1,4 @@
-# Installation and Verify
+# Installation and Verification of Atlas Engine
 
 Use this guide to install the documentation toolchain locally and confirm that builds work.
 
