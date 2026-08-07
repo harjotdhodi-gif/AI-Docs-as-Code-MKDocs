@@ -124,7 +124,7 @@ body {
 }
 
 .md-header__inner {
-  min-height: 3.5rem;
+  min-height: 5.5rem;
 }
 
 .md-header__button.md-logo {
@@ -217,7 +217,7 @@ body {
 
 .md-tabs__item {
   flex: 0 0 auto;
-  height: 3.45rem;
+  height: 7.45rem;
   padding: 0 0.25rem;
 }
 
