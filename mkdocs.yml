@@ -140,6 +140,7 @@ extra_css:
   - stylesheets/branch2-updates.css
   - stylesheets/branch2-search-navigation.css
   - stylesheets/single-hero-art.css
+  - stylesheets/backup-branch-fixes.css
 
 extra_javascript:
   - javascripts/home-search.js
