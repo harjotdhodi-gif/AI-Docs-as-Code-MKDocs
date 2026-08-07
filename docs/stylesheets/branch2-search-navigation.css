@@ -99,13 +99,13 @@ html {
   display: block !important;
   content: "" !important;
   pointer-events: none;
-  background: linear-gradient(
-    90deg,
-    rgba(14, 22, 47, 0.92) 0%,
-    rgba(14, 22, 47, 0.78) 42%,
-    rgba(14, 22, 47, 0.52) 70%,
-    rgba(14, 22, 47, 0.38) 100%
-  ) !important;
+ /* background: linear-gradient(
+  *  90deg,
+  *  rgba(14, 22, 47, 0.92) 0%,
+  *  rgba(14, 22, 47, 0.78) 42%,
+   * rgba(14, 22, 47, 0.52) 70%,
+   * rgba(14, 22, 47, 0.38) 100%
+ * ) !important;  */
 }
 
 .help-home__hero::after {
@@ -116,7 +116,7 @@ html {
   height: 28%;
   content: "" !important;
   pointer-events: none;
-  background: linear-gradient(transparent, rgba(8, 15, 34, 0.42)) !important;
+/*  background: linear-gradient(transparent, rgba(8, 15, 34, 0.42)) !important;  */
 }
 
 .help-home__hero-art {
