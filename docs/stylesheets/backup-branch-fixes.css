@@ -115,7 +115,7 @@
   .md-main::before,
   .md-main::after {
     width: clamp(4.5rem, 12vw, 7rem) !important;
-    opacity: 0.5 !important;
+    opacity: 1.0 !important;
   }
 }
 
