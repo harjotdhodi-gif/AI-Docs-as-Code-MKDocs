@@ -475,11 +475,11 @@ body {
 
 .md-social__link {
   display: inline-flex;
-  width: 2.2rem;
-  height: 2.2rem;
+  width: 3.0rem;
+  height: 3.0rem;
   align-items: center;
   justify-content: center;
-  font-size: 1.35rem;
+  font-size: 1.65rem;
 }
 
 /* Downloads page */
