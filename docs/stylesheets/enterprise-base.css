@@ -186,9 +186,18 @@ body {
   width: 150%;
   overflow: hidden;
   color: #ffffff;
+    /* Image-based banner */
+  background-color: var(--sls-teal-900); /* fallback only */
+  background-image: url("../assets/banner.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  
+  /* 
   background:
     linear-gradient(110deg, rgba(18, 79, 89, 0.98), rgba(23, 97, 108, 0.98)),
     var(--sls-teal-900);
+  */
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: none;
 }
