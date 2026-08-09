@@ -5,8 +5,8 @@
  */
 
 :root {
-  --branch2-header-height: 2.5rem;
-  --branch2-tabs-height: 5.45rem;
+  --branch2-header-height: 1rem;
+  --branch2-tabs-height: 2rem;
 }
 
 html {
