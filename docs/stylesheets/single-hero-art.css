@@ -56,7 +56,7 @@
   right: 0;
   /* Use the branch variable if present; fallback to 3.45rem */
   height: var(--branch2-tabs-height, 3.45rem) !important;
-  background-image: url("../assets/8.png") !important;
+  background-image: url("../assets/banner.png") !important;
   background-repeat: no-repeat !important;
   background-position: center center !important;
   background-size: cover !important;
