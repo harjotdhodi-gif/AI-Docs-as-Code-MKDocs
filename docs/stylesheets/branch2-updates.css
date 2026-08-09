@@ -5,8 +5,12 @@
  */
 
 :root {
-  --branch2-header-height: 3.5rem;
-  --branch2-tabs-height: 3.45rem;
+  --branch2-header-height: 2.5rem;
+  --branch2-tabs-height: 5.45rem;
+}
+
+html {
+  scroll-padding-top: calc(var(--branch2-header-height) + var(--branch2-tabs-height) + 1rem);
 }
 
 /* Light mode only. */
