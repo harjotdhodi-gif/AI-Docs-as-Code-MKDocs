@@ -55,7 +55,7 @@
   left: 0;
   right: 0;
   /* Use the branch variable if present; fallback to 3.45rem */
-  height: var(--branch2-tabs-height, 3.45rem) !important;
+  height: var(--branch2-tabs-height, 4.45rem) !important;
   background-image: url("../assets/banner.png") !important;
   background-repeat: no-repeat !important;
   background-position: center center !important;
@@ -79,7 +79,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: var(--branch2-tabs-height, 3.45rem);
+  height: var(--branch2-tabs-height, 4.45rem);
   background: rgba(0, 0, 0, 0.24);
   pointer-events: none;
   z-index: 0;
