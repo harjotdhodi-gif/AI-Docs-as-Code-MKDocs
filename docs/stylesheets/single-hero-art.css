@@ -55,7 +55,7 @@
   left: 0;
   right: 0;
   /* Use the branch variable if present; fallback to 3.45rem */
-  height: var(--branch2-tabs-height, 4.45rem) !important;
+  height: var(--branch2-tabs-height, 7rem) !important;
   background-image: url("../assets/banner.png") !important;
   background-repeat: no-repeat !important;
   background-position: center center !important;
@@ -72,7 +72,7 @@
   z-index: 1;
 }
 
-/* Optional: semi-transparent overlay for better contrast (adjust color/alpha as needed) */
+/* Optional: semi-transparent overlay for better contrast (adjust color/alpha as needed) 
 .md-tabs::after {
   content: "";
   position: absolute;
@@ -84,3 +84,4 @@
   pointer-events: none;
   z-index: 0;
 }
+*/
