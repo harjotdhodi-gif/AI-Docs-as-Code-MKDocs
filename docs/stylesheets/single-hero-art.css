@@ -44,7 +44,7 @@
 .md-tabs {
   background: none !important;
   position: relative !important;
-  min-height: var(--branch2-tabs-height, 7rem);
+  min-height: height: 7rem !important;
   overflow: visible;
 }
 
@@ -53,7 +53,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  height: var(--branch2-tabs-height, 7rem) !important;
+  height: height: 7rem !important;
   background-image: url("../assets/banner.png") !important;
   background-repeat: no-repeat !important;
   background-position: center 35% !important;
@@ -67,13 +67,13 @@
   z-index: 1;
 }
 
-/* .md-tabs::before {
+ .md-tabs::before {
   content: "";
   position: absolute;
-  top: 0;
+  top: -2;
   left: 0;
   right: 0;
-  
+ }
   /* Use the branch variable if present; fallback to 3.45rem 
   height: var(--branch2-tabs-height, 7rem) !important;
   background-image: url("../assets/banner.png") !important;
