@@ -44,6 +44,7 @@
 .md-tabs {
   background: none !important;
   position: relative !important;
+  min-height: var(--branch2-tabs-height, 7rem);
   overflow: visible;
 }
 
@@ -51,10 +52,29 @@
 .md-tabs::before {
   content: "";
   position: absolute;
+  inset: 0;
+  height: var(--branch2-tabs-height, 7rem) !important;
+  background-image: url("../assets/banner.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center 35% !important;
+  background-size: cover !important;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.md-tabs > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* .md-tabs::before {
+  content: "";
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  /* Use the branch variable if present; fallback to 3.45rem */
+  
+  /* Use the branch variable if present; fallback to 3.45rem 
   height: var(--branch2-tabs-height, 7rem) !important;
   background-image: url("../assets/banner.png") !important;
   background-repeat: no-repeat !important;
@@ -63,6 +83,7 @@
   pointer-events: none;
   z-index: 0;
 }
+*/
 
 /* Make sure tab content sits above the banner */
 .md-tabs > .md-grid,
