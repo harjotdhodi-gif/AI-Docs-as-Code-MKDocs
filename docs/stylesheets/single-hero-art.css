@@ -44,7 +44,7 @@
 .md-tabs {
   background: none !important;
   position: relative !important;
-  min-height: height: 7rem !important;
+  min-height: height: 4rem !important;
   overflow: visible;
 }
 
@@ -53,7 +53,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  height: height: 7rem !important;
+  height: height: 4rem !important;
   background-image: url("../assets/banner.png") !important;
   background-repeat: no-repeat !important;
   background-position: center 35% !important;
@@ -70,7 +70,7 @@
  .md-tabs::before {
   content: "";
   position: absolute;
-  top: -2;
+  top: -6;
   left: 0;
   right: 0;
  }
