@@ -39,3 +39,48 @@
     display: none !important;
   }
 }
+
+/* Ensure .md-tabs is a positioning context for the pseudo-banner */
+.md-tabs {
+  background: none !important;
+  position: relative !important;
+  overflow: visible;
+}
+
+/* Banner image that sits behind the tabs and covers the full width */
+.md-tabs::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* Use the branch variable if present; fallback to 3.45rem */
+  height: var(--branch2-tabs-height, 3.45rem) !important;
+  background-image: url("../assets/8.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Make sure tab content sits above the banner */
+.md-tabs > .md-grid,
+.md-tabs__inner,
+.md-tabs__list {
+  position: relative;
+  z-index: 1;
+}
+
+/* Optional: semi-transparent overlay for better contrast (adjust color/alpha as needed) */
+.md-tabs::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--branch2-tabs-height, 3.45rem);
+  background: rgba(0, 0, 0, 0.24);
+  pointer-events: none;
+  z-index: 0;
+}
