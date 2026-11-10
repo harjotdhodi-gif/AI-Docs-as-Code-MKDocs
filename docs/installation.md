@@ -22,6 +22,7 @@ Install the Atlas command-line interface (CLI) in an isolated Python environment
 | macOS | 13 | Supported |
 | Ubuntu | 22.04 LTS | Supported |
 | Other Linux distributions | — | Community tested |
+|Browser | Chrome | Supported |
 
 ## Install with `pipx`
 
